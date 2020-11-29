@@ -1,0 +1,34 @@
+﻿@model Proiect_ASP_final.Models.Produs
+
+<br />
+<div class="form-group">
+    @Html.LabelFor(m => m.titlu, "Titlu - Trebuie să conțină între 2 și 100 de caractere")
+    <br />
+    @Html.ValidationMessageFor(m => m.titlu, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.titlu, new { htmlAttributes = new { @class = "form-control" } })
+    <br /> <br />
+
+    @Html.LabelFor(m => m.descriere, "Descriere - Trebuie să conțină între 10 și 4096 de caractere")
+    <br />
+    @Html.ValidationMessageFor(m => m.descriere, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.descriere, new { htmlAttributes = new { @class = "form-control" } })
+    <br /> <br />
+
+    @Html.LabelFor(m => m.pret, "Preț - Trebuie să fie un număr pozitiv mai mic decât un miliard")
+    <br />
+    @Html.ValidationMessageFor(m => m.pret, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.pret, new { htmlAttributes = new { @class = "form-control" } })
+    <br /> <br />
+
+    @Html.LabelFor(m => m.cantitate, "Cantitate - Trebuie să fie un număr mai mare decât 1 și mai mic decât un milion")
+    <br />
+    @Html.ValidationMessageFor(m => m.cantitate, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.cantitate, new { htmlAttributes = new { @class = "form-control" } })
+    <br /> <br />
+
+</div>
+

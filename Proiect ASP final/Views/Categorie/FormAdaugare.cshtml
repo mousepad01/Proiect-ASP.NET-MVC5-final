@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "FormAdaugare";
+}
+@model Proiect_ASP_final.Models.Categorie
+
+<h2>Adaugă o nouă categorie (aceasta functionalitate ar trebui sa fie disponibila doar utilizatorilor admin)</h2>
+<br />
+<form method="post" action="/Categorie/Adaugare">
+
+    @Html.Partial("InputCategorii", @Model)
+    <br />
+    <button class="btn btn-success" type="submit">Adaugă noua categorie</button>
+</form>
+

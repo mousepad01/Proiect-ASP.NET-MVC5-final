@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Afisare categorie";
+}
+
+@model Proiect_ASP_final.Models.Categorie
+
+<h2>@Model.titlu</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        Descriere: @Model.descriere
+        <br />
+    </div>
+    @if (User.IsInRole("Admin") == true)
+    {
+        <div class="panel panel-footer">
+            <a class="btn btn-info" href="/Categorie/Editare/@Model.idCategorie" role="button">Editează aceasta categorie</a>
+            <br />
+            <br />
+            <form method="post" action="/Categorie/Stergere/@Model.idCategorie">
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                <button class="btn btn-danger" type="submit">Șterge permanent aceasta categorie</button>
+                <br />
+            </form>
+        </div>
+    }
+</div>
+<br />
+<h3>Produse din această categorie:</h3>
+<br />
+@foreach (Proiect_ASP_final.Models.Produs prod in ViewBag.produse)
+{
+    @Html.Partial("ProdusSumar", prod)
+    <hr />
+}

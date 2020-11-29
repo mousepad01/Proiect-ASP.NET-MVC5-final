@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>@ViewBag.mesaj</h1>
+
+<h1>Lista completă de produse:</h1>
+
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col col-3 col-md-3">
+            <div class="affix">
+                <form action="/Produs/IndexSorted" method="post">
+                    <label for="sortCrit">Sortați după:</label>
+                    <div class="form-group">
+                        <select class="form-control" id="sortCrit" name="sortCrit">
+                            <option value="none" @(ViewBag.selectedSort == "none" ? "selected" : "")>-- Aleator --</option>
+                            <option value="tc" @(ViewBag.selectedSort == "tc" ? "selected" : "")>Titlu crescător</option>
+                            <option value="tdc" @(ViewBag.selectedSort == "tdc" ? "selected" : "")>Titlu descrescător</option>
+                            <option value="pc" @(ViewBag.selectedSort == "pc" ? "selected" : "")>Preț crescător</option>
+                            <option value="pdc" @(ViewBag.selectedSort == "pdc" ? "selected" : "")>Preț descrescător</option>
+                            <option value="dc" @(ViewBag.selectedSort == "dc" ? "selected" : "")>Data adăugării crescător</option>
+                            <option value="ddc" @(ViewBag.selectedSort == "ddc" ? "selected" : "")>Data adăugării descrescător</option>
+                        </select>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <label>Selectați intervalul de preț:</label>
+                        <input class="form-control" type="number" name="pretMin" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMinDefault" required="required" />
+                        <input class="form-control" type="number" name="pretMax" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMaxDefault" required="required" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Selectați intervalul datei de adăugare:</label>
+                        <input class="form-control" type="date" name="dataMin" value="@ViewBag.dataMinDefault.ToString("yyyy-MM-dd")" required="required" />
+                        <input class="form-control" type="date" name="dataMax" value="@ViewBag.dataMaxDefault.ToString("yyyy-MM-dd")" required="required" />
+                    </div>
+                    <br />
+                    <button class="btn btn-primary" type="submit">Aplica preferintele</button>
+                    <br />
+                    <br />
+                    <a class="btn btn-danger" href="/Produs/Index" role="button">Resetează preferințele</a>
+                    <br />
+                    @if (User.IsInRole("Admin") == true || User.IsInRole("Seller") == true)
+                    {
+                        <br />
+                        <a class="btn btn-success" href="/Produs/Adaugare" role="button">Adaugă un nou produs</a>
+                        <br />
+                    }
+                    <br />
+                    <a class="btn btn-info" href="/Categorie/Index" role="button">Afișează lista de categorii</a>
+                </form>
+                </div>
+            </div>
+            <div class="col col-9 col-md-9">
+                @foreach (Proiect_ASP_final.Models.Produs prod in ViewBag.produse)
+                {
+                    @Html.Partial("ProdusSumar", prod)
+                }
+            </div>
+        </div>
+</div>
+
+<hr />
+

@@ -1,0 +1,17 @@
+﻿@model Proiect_ASP_final.Models.Categorie
+
+<div class="form-group">
+
+    @Html.LabelFor(m => m.titlu, "Titlu - Trebuie să conțină între 2 și 100 de caractere")
+    <br />
+    @Html.ValidationMessageFor(m => m.titlu, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.titlu, new { htmlAttributes = new { @class = "form-control" } })
+    <br /> <br />
+    @Html.LabelFor(m => m.descriere, "Descriere - Trebuie să aibă minim 10 caractere și maxim 4096 caractere")
+    <br />
+    @Html.ValidationMessageFor(m => m.descriere, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.descriere, new { htmlAttributes = new { @class = "form-control" } })
+    <br /> <br />
+</div>

@@ -1,0 +1,107 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Afisare produse";
+}
+
+@model Proiect_ASP_final.Models.Produs
+
+<h3>@ViewBag.mesaj</h3>
+
+<h2>@Model.titlu</h2>
+@foreach (var categ in Model.CategoriiAsociate)
+{   
+    <a href="/Categorie/Afisare/@categ.Value">@categ.Text</a>
+}
+<br />
+<hr />
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col col-md-4">
+                <i class="glyphicon glyphicon-user"></i> Producător: @Model.numeOwner
+            </div>
+            <div class="col col-md-4">
+                <i class="glyphicon glyphicon-tag"></i> Preț: @Model.pret
+            </div>
+            <div class="col col-md-4">
+                <i class="glyphicon glyphicon-question-sign"></i> Cantitate disponibilă: @Model.cantitate
+            </div>
+        </div>
+        <br />
+        @Model.descriere
+        <br />
+        <br />
+        <i class="glyphicon glyphicon-calendar"></i> Adăugat la data de: @Model.dataAdaugare
+    </div>
+    <div class="panel panel-footer">
+
+        @if (ViewBag.accesStergereProdus == true)
+        {
+            <form method="post" action="/Produs/Stergere/@Model.idProdus">
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+
+                <button class="btn btn-danger" type="submit">Șterge permanent acest produs</button>
+            </form>
+        }
+        @if (ViewBag.accesEditareProdus == true)
+        {
+            <br />
+            <a class="btn btn-info" href="/Produs/Editare/@Model.idProdus" role="button">Editează acest produs</a>
+        }
+
+    </div>
+    @foreach (var rev in ViewBag.ratinguri)
+    {
+        <br />
+        <p>@rev.numeUtilizator</p>
+        <p>@rev.rating</p>
+        <p>@rev.descriere</p>
+        <small>@rev.dataReview</small>
+        <br />
+        if (rev.idUtilizator == User.Identity.GetUserId())
+        {
+            if (ViewBag.EroareEditareRating == rev.prodRating)
+            {
+                <div class="reviewEditare">
+                    @Html.Partial("EditareRating", new Proiect_ASP_final.Models.ProdusRating { prodRating = ViewBag.ratingEronatEditare.prodRating, idProdus = ViewBag.ratingEronatEditare.idProdus, rating = ViewBag.ratingEronatEditare.rating, descriere = ViewBag.ratingEronatEditare.descriere })
+                </div>
+            }
+            else
+            {
+                <button onclick="editeaza(@rev.prodRating)">Editează acest review</button>
+                <div id="reviewEditare_@rev.prodRating"></div>
+            }
+            <br />
+        }
+        if (rev.idUtilizator == User.Identity.GetUserId() || User.IsInRole("Admin"))
+        {
+            <form method="post" action="/ProdusRating/StergeRating/@rev.prodRating">
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                <button type="submit">Șterge acest review</button>
+            </form>
+        }
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (ViewBag.EroareNouRating == true)
+        {
+            <div id="reviewNou">
+                @Html.Partial("InputRating", new Proiect_ASP_final.Models.ProdusRating { idProdus = ViewBag.ratingEronatAdaugare.idProdus, rating = ViewBag.ratingEronatAdaugare.rating, descriere = ViewBag.ratingEronatAdaugare.descriere })
+            </div>
+        }
+        else
+        {
+            <button id="ratingNouBtn" value="@Model.idProdus">Adaugă un nou review</button>
+            <div id="reviewNou"></div>
+        }
+    }
+
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/ButoaneRating.js"></script>
+
+
+
+
+
