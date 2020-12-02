@@ -56,7 +56,6 @@ C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft.Owin.dll
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft.Owin.Security.Cookies.dll
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft.Owin.Security.dll
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft.Owin.Security.Facebook.dll
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\bin\Microsoft.Owin.Security.Google.dll

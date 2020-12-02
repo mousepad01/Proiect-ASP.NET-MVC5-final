@@ -11,7 +11,7 @@ namespace Proiect_ASP_final.Controllers
      * admin ul are drepturi depline (stergere, adaugare, editare, vizualizare)
      * restul utilizatorilor si cei neautentificati vor avea doar drept de vizualizare
      */
-
+    [RequireHttps]
     public class CategorieController : Controller
     {
         private Models.ApplicationDbContext db = new ApplicationDbContext();

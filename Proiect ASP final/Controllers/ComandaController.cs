@@ -6,7 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Proiect_ASP_final.Controllers
-{
+{   
+    [RequireHttps]
     public class ComandaController : Controller
     {
         /*

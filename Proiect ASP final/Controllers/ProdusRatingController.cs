@@ -7,7 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Proiect_ASP_final.Controllers
-{
+{   
+    [RequireHttps]
     public class ProdusRatingController : Controller
     {
         // Ideea lui stefan pentru rating (poti sterge asta dupa ce ai citit): sa avem un singur create per user-produs (un utilizator poate adauga un singur rating pentru fiecare produs)

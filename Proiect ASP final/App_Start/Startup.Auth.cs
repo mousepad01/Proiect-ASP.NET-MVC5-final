@@ -59,11 +59,11 @@ namespace Proiect_ASP_final
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "591251931514-44nanjsiihnlfqj779pdetlov6em400q.apps.googleusercontent.com",
+                ClientSecret = "8sYnYAIApH_J3t0QVe9e9TFq"
+            });
         }
     }
 }
