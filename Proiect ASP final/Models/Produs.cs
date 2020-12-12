@@ -39,6 +39,12 @@ namespace Proiect_ASP_final.Models
         [Range(1, 1000000, ErrorMessage = "Cantitatea trebuie să fie cuprinsă între 1 și 1 milion!")]
         public int cantitate { get; set; }
 
+        public bool aprobat { get; set; }
+
+        public int ratingInsumat { get; set; }
+        public int nrRatinguri { get; set; }
+        public int ratingMediu { get; set; }
+
         public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<CategorieProdus> CategoriiProduse { get; set; }

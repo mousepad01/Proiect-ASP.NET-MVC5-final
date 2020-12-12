@@ -21,6 +21,8 @@
                             <option value="tdc" @(ViewBag.selectedSort == "tdc" ? "selected" : "")>Titlu descrescător</option>
                             <option value="pc" @(ViewBag.selectedSort == "pc" ? "selected" : "")>Preț crescător</option>
                             <option value="pdc" @(ViewBag.selectedSort == "pdc" ? "selected" : "")>Preț descrescător</option>
+                            <option value="rc" @(ViewBag.selectedSort == "rc" ? "selected" : "")>Rating crescător</option>
+                            <option value="rdc" @(ViewBag.selectedSort == "rdc" ? "selected" : "")>Rating descrescător</option>
                             <option value="dc" @(ViewBag.selectedSort == "dc" ? "selected" : "")>Data adăugării crescător</option>
                             <option value="ddc" @(ViewBag.selectedSort == "ddc" ? "selected" : "")>Data adăugării descrescător</option>
                         </select>
@@ -31,6 +33,12 @@
                         <label>Selectați intervalul de preț:</label>
                         <input class="form-control" type="number" name="pretMin" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMinDefault" required="required" />
                         <input class="form-control" type="number" name="pretMax" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMaxDefault" required="required" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Selectați intervalul de rating:</label>
+                        <input class="form-control" type="number" name="ratingMin" min="@ViewBag.ratingMin" max="@ViewBag.ratingMax" value="@ViewBag.ratingMinDefault" required="required" />
+                        <input class="form-control" type="number" name="ratingMax" min="@ViewBag.ratingMin" max="@ViewBag.ratingMax" value="@ViewBag.ratingMaxDefault" required="required" />
                     </div>
                     <br />
                     <div class="form-group">
@@ -55,12 +63,29 @@
                 </form>
                 </div>
             </div>
-            <div class="col col-9 col-md-9">
-                @foreach (Proiect_ASP_final.Models.Produs prod in ViewBag.produse)
+        <div class="col col-9 col-md-9">
+            @foreach (Proiect_ASP_final.Models.Produs prod in ViewBag.produse)
+            {
+                @Html.Partial("ProdusSumar", prod)
+            }
+            @if (ViewBag.arataNeaprobate)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <h3 class="text-warning">Toate produsele neaprobate</h3>
+                }
+                else
+                {
+                    <h3 class="text-warning">Produsele proprii neaprobate</h3>
+                }
+
+                foreach (Proiect_ASP_final.Models.Produs prod in ViewBag.produseNeaprobateProprii)
                 {
                     @Html.Partial("ProdusSumar", prod)
                 }
-            </div>
+            }
+
+        </div>
         </div>
 </div>
 

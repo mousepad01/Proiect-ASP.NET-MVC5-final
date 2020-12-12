@@ -19,6 +19,42 @@ namespace Proiect_ASP_final.Controllers
         // Also planuiesc sa fac rating-ul cu 5 stelute din front-end (vezi cum are eMag ca sa-ti faci o idee)
         private Models.ApplicationDbContext db = new ApplicationDbContext();
 
+        // calcularea ratingului mediu al unui produs
+        [NonAction]
+        public int getRatingMediu(Produs produs)
+        {
+            if (produs.nrRatinguri == 0)
+                return 0;
+            else
+                return produs.ratingInsumat / produs.nrRatinguri;
+        }
+
+        // metoda pentru a updata numarul de review uri si suma review urilor ale produsului asociat 
+        [NonAction]
+        public void UpdateRatingStat(int produsId, int rating, string flag)
+        {
+            Produs produsAsociat = db.Produse.Find(produsId);
+
+            if (flag == "NOU")
+                produsAsociat.nrRatinguri += 1;
+
+            if (flag == "STERGE")
+                produsAsociat.nrRatinguri -= 1;
+
+            if (flag == "STERGE")
+                produsAsociat.ratingInsumat -= rating;
+            else
+                produsAsociat.ratingInsumat += rating;
+
+            produsAsociat.ratingMediu = getRatingMediu(produsAsociat);
+
+            if (TryUpdateModel(produsAsociat))
+            {
+                db.SaveChanges();
+            }
+
+        }
+
         // GET : apelat de un script in jQuery, returneaza view ul partial pentru adaugarea unui comentariu nou
         // in aceasta metoda, parametrul ID este AL PRODUSULUI ASOCIAT !!!!!
         [Authorize(Roles = "Admin,Seller,User")]
@@ -48,6 +84,8 @@ namespace Proiect_ASP_final.Controllers
                     db.ProduseRatinguri.Add(ratingDeAdaugat);
                     db.SaveChanges();
 
+                    UpdateRatingStat(id, ratingDeAdaugat.rating, "NOU");
+
                     return Redirect("/Produs/Afisare/" + ratingDeAdaugat.idProdus);
                 }
                 else
@@ -72,7 +110,7 @@ namespace Proiect_ASP_final.Controllers
         {
             ProdusRating ratingDeSters = db.ProduseRatinguri.Find(id);
 
-            int produsAsociat = ratingDeSters.idProdus;
+            int idProdusAsociat = ratingDeSters.idProdus;
 
             if (User.Identity.GetUserId() == ratingDeSters.idUtilizator || User.IsInRole("Admin"))
             {
@@ -82,20 +120,22 @@ namespace Proiect_ASP_final.Controllers
 
                     db.SaveChanges();
 
+                    UpdateRatingStat(idProdusAsociat, ratingDeSters.rating, "STERGE");
+
                     TempData["mesaj"] = "Rating-ul a fost șters cu succes!";
 
-                    return Redirect("/Produs/Afisare/" + produsAsociat);
+                    return Redirect("/Produs/Afisare/" + idProdusAsociat);
                 }
                 catch (Exception)
                 {
                     TempData["mesaj"] = "Eroare la ștergerea unui rating";
-                    return Redirect("/Produs/Afisare/" + produsAsociat);
+                    return Redirect("/Produs/Afisare/" + idProdusAsociat);
                 }
             }
             else
             {
                 TempData["mesaj"] = "Nu aveți dreptul sa ștergeți acest comentariu!";
-                return Redirect("/Produs/Afisare/" + produsAsociat);
+                return Redirect("/Produs/Afisare/" + idProdusAsociat);
             }
 
         }
@@ -134,11 +174,15 @@ namespace Proiect_ASP_final.Controllers
                     {
                         if (TryUpdateModel(ratingDeEditat))
                         {
+                            int ratingDif = ratingActualizat.rating - ratingDeEditat.rating;
+
                             ratingDeEditat.rating = ratingActualizat.rating;
-                            ratingDeEditat.descriere = ratingActualizat.descriere;
+                            ratingDeEditat.descriereRating = ratingActualizat.descriereRating;
                             ratingDeEditat.dataReview = DateTime.Now;
 
                             db.SaveChanges();
+
+                            UpdateRatingStat(ratingDeEditat.idProdus, ratingDif, "EDITAT");
 
                             return Redirect("/Produs/Afisare/" + ratingDeEditat.idProdus);
                         }

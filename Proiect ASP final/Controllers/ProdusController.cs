@@ -19,11 +19,15 @@ namespace Proiect_ASP_final.Controllers
         public ActionResult Index()
         {
             var produse = from p in db.Produse
+                          where p.aprobat == true
                           select p;
 
             // pentru a afisa intervalele default de filtre
             int pretMax = produse.Max(produs => produs.pret);
             int pretMin = produse.Min(produs => produs.pret);
+
+            int ratingMin = produse.Min(produs => produs.ratingMediu);
+            int ratingMax = produse.Max(produs => produs.ratingMediu);
 
             DateTime dataMax = produse.Max(produs => produs.dataAdaugare);
             DateTime dataMin = produse.Min(produs => produs.dataAdaugare);
@@ -36,6 +40,12 @@ namespace Proiect_ASP_final.Controllers
             ViewBag.pretMinDefault = pretMin;
             ViewBag.pretMaxDefault = pretMax;
 
+            ViewBag.ratingMin = ratingMin;
+            ViewBag.ratingMax = ratingMax;
+
+            ViewBag.ratingMinDefault = ratingMin;
+            ViewBag.ratingMaxDefault = ratingMax;
+
             ViewBag.dataMax = dataMax;
             ViewBag.dataMin = dataMin;
 
@@ -46,6 +56,35 @@ namespace Proiect_ASP_final.Controllers
 
             if (TempData["mesaj"] != null)
                 ViewBag.mesaj = TempData["mesaj"];
+
+            string idUserCurent = User.Identity.GetUserId();
+
+            IQueryable<Produs> produseNeaprobate;
+
+            if (User.IsInRole("Admin"))
+            {
+                produseNeaprobate = from p in db.Produse
+                                    where p.aprobat == false
+                                    select p;
+            }
+            else if (User.IsInRole("Seller"))
+            {
+                produseNeaprobate = from p in db.Produse
+                                    where p.idOwner == idUserCurent
+                                    where p.aprobat == false
+                                    select p;
+            }
+            else
+                produseNeaprobate = null;
+
+            if (produseNeaprobate != null && produseNeaprobate.ToList().Count > 0)
+            {
+                ViewBag.arataNeaprobate = true;
+
+                ViewBag.produseNeaprobateProprii = produseNeaprobate;
+            }
+            else
+                ViewBag.arataNeaprobate = false;
 
             return View();
         }
@@ -59,26 +98,37 @@ namespace Proiect_ASP_final.Controllers
 
             // Intervalele default din filtre 
             var produse = from p in db.Produse
+                          where p.aprobat == true
                           select p;
 
             int pretMax = produse.Max(produs => produs.pret);
             int pretMin = produse.Min(produs => produs.pret);
+
+            int ratingMin = produse.Min(produs => produs.ratingMediu);
+            int ratingMax = produse.Max(produs => produs.ratingMediu);
 
             DateTime dataMax = produse.Max(produs => produs.dataAdaugare);
             DateTime dataMin = produse.Min(produs => produs.dataAdaugare);
 
             ViewBag.pretMax = pretMax;
             ViewBag.pretMin = pretMin;
+            ViewBag.ratingMin = ratingMin;
+            ViewBag.ratingMax = ratingMax;
             ViewBag.dataMax = dataMax;
             ViewBag.dataMin = dataMin;
 
             int pretMinAux = Convert.ToInt32(result["pretMin"]);
             int pretMaxAux = Convert.ToInt32(result["pretMax"]);
+            int ratingMinAux = Convert.ToInt32(result["ratingMin"]);
+            int ratingMaxAux = Convert.ToInt32(result["ratingMax"]);
             DateTime dataMinAux = Convert.ToDateTime(result["dataMin"]);
             DateTime dataMaxAux = Convert.ToDateTime(result["dataMax"]);
 
             ViewBag.pretMinDefault = pretMinAux;
             ViewBag.pretMaxDefault = pretMaxAux;
+
+            ViewBag.ratingMinDefault = ratingMinAux;
+            ViewBag.ratingMaxDefault = ratingMaxAux;
 
             ViewBag.dataMaxDefault = dataMaxAux;
             ViewBag.dataMinDefault = dataMinAux;
@@ -88,7 +138,9 @@ namespace Proiect_ASP_final.Controllers
             dataMaxAux = dataMaxAux.AddDays(1);
            
             produse = from p in db.Produse
+                      where p.aprobat == true
                       where p.pret >= pretMinAux && p.pret <= pretMaxAux
+                      where p.ratingMediu >= ratingMinAux && p.ratingMediu <= ratingMaxAux
                       where p.dataAdaugare >= dataMinAux && p.dataAdaugare <= dataMaxAux 
                       select p;
 
@@ -102,6 +154,10 @@ namespace Proiect_ASP_final.Controllers
                 produse = produse.OrderBy(produs => produs.pret);
             else if (sortCrit == "pdc")
                 produse = produse.OrderByDescending(produs => produs.pret);
+            else if (sortCrit == "rc")
+                produse = produse.OrderBy(produs => produs.ratingMediu);
+            else if (sortCrit == "rdc")
+                produse = produse.OrderByDescending(produs => produs.ratingMediu);
             else if (sortCrit == "dc")
                 produse = produse.OrderBy(produs => produs.dataAdaugare);
             else if (sortCrit == "ddc")
@@ -110,6 +166,35 @@ namespace Proiect_ASP_final.Controllers
             ViewBag.selectedSort = sortCrit;
 
             ViewBag.produse = produse;
+
+            string idUserCurent = User.Identity.GetUserId();
+
+            IQueryable<Produs> produseNeaprobate;
+
+            if (User.IsInRole("Admin"))
+            {
+                produseNeaprobate = from p in db.Produse
+                                    where p.aprobat == false
+                                    select p;
+            }
+            else if (User.IsInRole("Seller"))
+            {
+                produseNeaprobate = from p in db.Produse
+                                    where p.idOwner == idUserCurent
+                                    where p.aprobat == false
+                                    select p;
+            }
+            else
+                produseNeaprobate = null;
+
+            if (produseNeaprobate != null && produseNeaprobate.ToList().Count > 0)
+            {
+                ViewBag.arataNeaprobate = true;
+
+                ViewBag.produseNeaprobateProprii = produseNeaprobate;
+            }
+            else
+                ViewBag.arataNeaprobate = false;
 
             return View("Index");
         }
@@ -247,71 +332,83 @@ namespace Proiect_ASP_final.Controllers
         {
             Produs produsDeAfisat = db.Produse.Find(id);
 
-            produsDeAfisat.CategoriiAsociate = categoriiAsociate(produsDeAfisat);
-
-            // vreau sa imi afiseze rating urile proprii primele
-
-            string currentUser = User.Identity.GetUserId();
-
-            var ratinguriProprii = from pr in db.ProduseRatinguri
-                                   where pr.idProdus == id
-                                   where pr.idUtilizator == currentUser
-                                   select pr;
-
-            var ratinguri = from pr in db.ProduseRatinguri
-                            where pr.idProdus == id
-                            where pr.idUtilizator != currentUser
-                            select pr;
-
-            ratinguri = ratinguriProprii.Concat(ratinguri);
-
-            ViewBag.ratinguri = ratinguri;
-
-            // verificare drepturi pentru vizualizat butoane de stergere si editare
-
-            // adminii pot sterge orice produs
-            // in schimb, produsul nu poate fi editat decat de owner (nici macar de admin, decat daca ii apartine)
-            if(produsDeAfisat.idOwner == User.Identity.GetUserId())
+            if (produsDeAfisat.aprobat == true || User.IsInRole("Admin") || User.Identity.GetUserId() == produsDeAfisat.idOwner)
             {
-                ViewBag.accesStergereProdus = true;
-                ViewBag.accesEditareProdus = true;
+
+                produsDeAfisat.CategoriiAsociate = categoriiAsociate(produsDeAfisat);
+
+                // vreau sa imi afiseze rating urile proprii primele
+
+                string currentUser = User.Identity.GetUserId();
+
+                var ratinguriProprii = from pr in db.ProduseRatinguri
+                                       where pr.idProdus == id
+                                       where pr.idUtilizator == currentUser
+                                       select pr;
+
+                var ratinguri = from pr in db.ProduseRatinguri
+                                where pr.idProdus == id
+                                where pr.idUtilizator != currentUser
+                                select pr;
+
+                ratinguri = ratinguriProprii.Concat(ratinguri);
+
+                ViewBag.ratinguri = ratinguri;
+
+                // verificare drepturi pentru vizualizat butoane de stergere si editare
+
+                // adminii pot sterge orice produs
+                // in schimb, produsul nu poate fi editat decat de owner (nici macar de admin, decat daca ii apartine)
+                if (produsDeAfisat.idOwner == User.Identity.GetUserId())
+                {
+                    ViewBag.accesStergereProdus = true;
+                    ViewBag.accesEditareProdus = true;
+                }
+                else if (User.IsInRole("Admin"))
+                {
+                    ViewBag.accesStergereProdus = true;
+                }
+
+                // daca valoarea este true, va afisa automat partial view ul de adaugare, 
+                // este folosit si pentru afisarea erorii la adaugarea unui nou comentariu
+                if (TempData["eroareRatingAdaugat"] != null)
+                {
+
+                    ViewBag.EroareNouRating = true;
+
+                    ProdusRating ratingEronatAdaugat = TempData["ratingEronatAdaugat"] as ProdusRating;
+                    ViewBag.ratingEronatAdaugare = ratingEronatAdaugat;
+
+                    ViewBag.eroare = TempData["eroare"];
+                }
+                else
+                    ViewBag.EroareNouRating = false;
+
+                if (TempData["eroareRatingEditat"] != null)
+                {
+                    ViewBag.EroareEditareRating = TempData["eroareRatingEditat"];
+
+                    ProdusRating ratingEronatEditat = TempData["ratingEronatEditat"] as ProdusRating;
+                    ViewBag.ratingEronatEditare = ratingEronatEditat;
+
+                    ViewBag.eroare = TempData["eroare"];
+                }
+                else
+                    ViewBag.EroareEditareRating = -1; // id de rating care nu exista
+
+                if (TempData["mesaj"] != null)
+                    ViewBag.mesaj = TempData["mesaj"];
+
+                ViewBag.aprobare = produsDeAfisat.aprobat;
+
+                return View(produsDeAfisat);
             }
-            else if (User.IsInRole("Admin"))
-            {
-                ViewBag.accesStergereProdus = true;
-            }
-
-            // daca valoarea este true, va afisa automat partial view ul de adaugare, 
-            // este folosit si pentru afisarea erorii la adaugarea unui nou comentariu
-            if (TempData["eroareRatingAdaugat"] != null)
-            {
-                
-                ViewBag.EroareNouRating = true;
-
-                ProdusRating ratingEronatAdaugat = TempData["ratingEronatAdaugat"] as ProdusRating;
-                ViewBag.ratingEronatAdaugare = ratingEronatAdaugat;
-
-                ViewBag.eroare = TempData["eroare"];
-            }  
             else
-                ViewBag.EroareNouRating = false;
-
-            if (TempData["eroareRatingEditat"] != null)
             {
-                ViewBag.EroareEditareRating = TempData["eroareRatingEditat"];
+                TempData["mesaj"] = "Nu aveți dreptul să vedeți acest produs! (Produs neaprobat)";
 
-                ProdusRating ratingEronatEditat = TempData["ratingEronatEditat"] as ProdusRating;
-                ViewBag.ratingEronatEditare = ratingEronatEditat;
-
-                ViewBag.eroare = TempData["eroare"];
+                return RedirectToAction("Index");
             }
-            else
-                ViewBag.EroareEditareRating = -1; // id de rating care nu exista
-
-            if (TempData["mesaj"] != null)
-                ViewBag.mesaj = TempData["mesaj"];
-
-            return View(produsDeAfisat);
         }
 
         // metoda care preia informatia din ambele form uri de editare (ale categoriilor, respectiv ale celorlalte informatii)
@@ -506,6 +603,12 @@ namespace Proiect_ASP_final.Controllers
 
                     produsDeAdaugat.dataAdaugare = DateTime.Now;
 
+                    produsDeAdaugat.aprobat = false;
+
+                    produsDeAdaugat.nrRatinguri = 0;
+                    produsDeAdaugat.ratingInsumat = 0;
+                    produsDeAdaugat.ratingMediu = 0;
+
                     produsDeAdaugat.idOwner = User.Identity.GetUserId();
                     produsDeAdaugat.numeOwner = User.Identity.GetUserName();
 
@@ -565,6 +668,23 @@ namespace Proiect_ASP_final.Controllers
 
                 return View("ExceptieStergere");
             }
+        }
+
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AprobareProdus(int id)
+        {   
+            Produs produsDeAprobat = db.Produse.Find(id);
+            produsDeAprobat.aprobat = true;
+
+            if (TryUpdateModel(produsDeAprobat))
+            {
+                db.SaveChanges();
+            }
+
+            TempData["mesaj"] = "Produsul a fost aprobat cu succes";
+
+            return RedirectToAction("Afisare", new { id = id });
         }
     }
 }

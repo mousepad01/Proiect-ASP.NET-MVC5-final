@@ -9,9 +9,20 @@
         <br />
         <i class="glyphicon glyphicon-tag"></i> @Model.pret
         <br />
+        <i class="glyphicon glyphicon-star"></i>
+
+        @if (Model.nrRatinguri == 0)
+        {
+            @: (Nici un rating)
+        }
+        else
+        {
+            @Model.ratingMediu @:(@Model.nrRatinguri rewiew - uri)
+        }
+        <br />
     </div>
     <div class="panel panel-footer">
-        <a class="btn btn-primary" href="/Produs/Afisare/@Model.idProdus" role="button">Afișare produs</a>
+        <a class="btn btn-outline-primary" href="/Produs/Afisare/@Model.idProdus" role="button">Afișare produs</a>
         <br />
     </div>
 </div>

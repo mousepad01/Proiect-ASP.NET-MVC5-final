@@ -26,7 +26,7 @@ namespace Proiect_ASP_final.Models
         public int rating { get; set; }
 
         [MaxLength(1024)]
-        public string descriere { get; set; }
+        public string descriereRating { get; set; }
        
         public virtual Produs produs { get; set; }
         public virtual ApplicationUser User { get; set; }

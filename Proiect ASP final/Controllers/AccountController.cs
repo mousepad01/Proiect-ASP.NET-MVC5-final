@@ -79,7 +79,7 @@ namespace Proiect_ASP_final.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Produs");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -165,7 +165,7 @@ namespace Proiect_ASP_final.Controllers
 
                     UserManager.AddToRole(user.Id, "User");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Produs");
                 }
                 AddErrors(result);
             }
@@ -335,7 +335,7 @@ namespace Proiect_ASP_final.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Produs");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -403,7 +403,7 @@ namespace Proiect_ASP_final.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Produs");
         }
 
         //
@@ -460,7 +460,7 @@ namespace Proiect_ASP_final.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Produs");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

@@ -16,6 +16,18 @@
 <hr />
 
 <div class="panel panel-default">
+    @if (ViewBag.aprobare == false)
+    {
+        <p class="text-warning">Produsul nu a fost (încă) aprobat!</p>
+
+        if (User.IsInRole("Admin"))
+        {   
+        <form method="post" action="/Produs/AprobareProdus/@Model.idProdus">
+            @Html.HttpMethodOverride(HttpVerbs.Put)
+            <button class="btn btn-light">Aprobă acest produs</button>
+        </form>
+        }
+    }
     <div class="panel-body">
         <div class="row">
             <div class="col col-md-4">
@@ -26,6 +38,18 @@
             </div>
             <div class="col col-md-4">
                 <i class="glyphicon glyphicon-question-sign"></i> Cantitate disponibilă: @Model.cantitate
+            </div>
+            <div class="col col-md-4">
+                <i class="glyphicon glyphicon-star"></i> Rating:
+                @if (Model.nrRatinguri == 0)
+                {
+                    @: (Nici un rating)
+                }
+                else
+                {
+                    @Model.ratingMediu @:(@Model.nrRatinguri rewiew - uri)
+                }
+
             </div>
         </div>
         <br />
@@ -56,7 +80,7 @@
         <br />
         <p>@rev.numeUtilizator</p>
         <p>@rev.rating</p>
-        <p>@rev.descriere</p>
+        <p>@rev.descriereRating</p>
         <small>@rev.dataReview</small>
         <br />
         if (rev.idUtilizator == User.Identity.GetUserId())
@@ -64,7 +88,7 @@
             if (ViewBag.EroareEditareRating == rev.prodRating)
             {
                 <div class="reviewEditare">
-                    @Html.Partial("EditareRating", new Proiect_ASP_final.Models.ProdusRating { prodRating = ViewBag.ratingEronatEditare.prodRating, idProdus = ViewBag.ratingEronatEditare.idProdus, rating = ViewBag.ratingEronatEditare.rating, descriere = ViewBag.ratingEronatEditare.descriere })
+                    @Html.Partial("EditareRating", new Proiect_ASP_final.Models.ProdusRating { prodRating = ViewBag.ratingEronatEditare.prodRating, idProdus = ViewBag.ratingEronatEditare.idProdus, rating = ViewBag.ratingEronatEditare.rating, descriereRating = ViewBag.ratingEronatEditare.descriereRating })
                 </div>
             }
             else
@@ -87,7 +111,7 @@
         if (ViewBag.EroareNouRating == true)
         {
             <div id="reviewNou">
-                @Html.Partial("InputRating", new Proiect_ASP_final.Models.ProdusRating { idProdus = ViewBag.ratingEronatAdaugare.idProdus, rating = ViewBag.ratingEronatAdaugare.rating, descriere = ViewBag.ratingEronatAdaugare.descriere })
+                @Html.Partial("InputRating", new Proiect_ASP_final.Models.ProdusRating { idProdus = ViewBag.ratingEronatAdaugare.idProdus, rating = ViewBag.ratingEronatAdaugare.rating, descriereRating = ViewBag.ratingEronatAdaugare.descriereRating })
             </div>
         }
         else
