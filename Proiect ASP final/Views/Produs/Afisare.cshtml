@@ -24,7 +24,7 @@
         {   
         <form method="post" action="/Produs/AprobareProdus/@Model.idProdus">
             @Html.HttpMethodOverride(HttpVerbs.Put)
-            <button class="btn btn-light">Aprobă acest produs</button>
+            <button class="btn">Aprobă acest produs</button>
         </form>
         }
     }
@@ -93,7 +93,7 @@
             }
             else
             {
-                <button onclick="editeaza(@rev.prodRating)">Editează acest review</button>
+                <button class="btn" onclick="editeaza(@rev.prodRating)">Editează acest review</button>
                 <div id="reviewEditare_@rev.prodRating"></div>
             }
             <br />
@@ -102,7 +102,7 @@
         {
             <form method="post" action="/ProdusRating/StergeRating/@rev.prodRating">
                 @Html.HttpMethodOverride(HttpVerbs.Delete)
-                <button type="submit">Șterge acest review</button>
+                <button class="btn" type="submit">Șterge acest review</button>
             </form>
         }
     }
@@ -116,7 +116,7 @@
         }
         else
         {
-            <button id="ratingNouBtn" value="@Model.idProdus">Adaugă un nou review</button>
+            <button class="btn" id="ratingNouBtn" value="@Model.idProdus">Adaugă un nou review</button>
             <div id="reviewNou"></div>
         }
     }

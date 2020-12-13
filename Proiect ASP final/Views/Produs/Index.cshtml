@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produse";
 }
 
 <h1>@ViewBag.mesaj</h1>
@@ -10,7 +10,7 @@
 <br />
 <div class="container-fluid">
     <div class="row">
-        <div class="col col-3 col-md-3">
+        <div class="col-md-3">
             <div class="affix">
                 <form action="/Produs/IndexSorted" method="post">
                     <label for="sortCrit">Sortați după:</label>
@@ -47,23 +47,23 @@
                         <input class="form-control" type="date" name="dataMax" value="@ViewBag.dataMaxDefault.ToString("yyyy-MM-dd")" required="required" />
                     </div>
                     <br />
-                    <button class="btn btn-primary" type="submit">Aplica preferintele</button>
+                    <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-filter"></i> Aplica preferintele</button>
                     <br />
                     <br />
-                    <a class="btn btn-danger" href="/Produs/Index" role="button">Resetează preferințele</a>
+                    <a class="btn btn-danger" href="/Produs/Index" role="button"><i class="glyphicon glyphicon-erase"></i> Resetează preferințele</a>
                     <br />
                     @if (User.IsInRole("Admin") == true || User.IsInRole("Seller") == true)
                     {
                         <br />
-                        <a class="btn btn-success" href="/Produs/Adaugare" role="button">Adaugă un nou produs</a>
+                        <a class="btn btn-success" href="/Produs/Adaugare" role="button"><i class="glyphicon glyphicon-plus"></i> Adaugă un nou produs</a>
                         <br />
                     }
                     <br />
-                    <a class="btn btn-info" href="/Categorie/Index" role="button">Afișează lista de categorii</a>
+                    <a class="btn btn-info" href="/Categorie/Index" role="button"><i class="glyphicon glyphicon-tasks"></i>Afișează lista de categorii</a>
                 </form>
                 </div>
             </div>
-        <div class="col col-9 col-md-9">
+        <div class="col-md-9">
             @foreach (Proiect_ASP_final.Models.Produs prod in ViewBag.produse)
             {
                 @Html.Partial("ProdusSumar", prod)

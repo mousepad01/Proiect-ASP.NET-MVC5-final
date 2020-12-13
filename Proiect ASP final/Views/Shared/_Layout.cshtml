@@ -3,20 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proiect ASP.NET MVC </title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/ColorScheme.css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-light navbar-fixed-top justify-content-between customNavbar">
         <div class="container">
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("PRODUSE", "Index", "Produs")</li>
-                    <li>@Html.ActionLink("CATEGORII DE PRODUSE", "Index", "Categorie")</li>
-                    <li>@Html.ActionLink("ADRESE", "Index", "Adresa")</li>
-                    @Html.Partial("_LoginPartial")
+                    <li class="nav-item"><a id="linkProd" href="/Produs/Index">PRODUSE</a></li>
+                    <li class="nav-item"><a id="linkCateg" href="/Categorie/Index">CATEGORII</a></li>
+                    <li class="nav-item"><a id="linkAdrese" href="/Adresa/Index">ADRESE</a></li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
@@ -27,6 +28,8 @@
             <p>&copy; Mitoi Ștefan, Stanciu Andrei Călin</p>
         </footer>
     </div>
+
+    <script src="~/Scripts/NavBarScript.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

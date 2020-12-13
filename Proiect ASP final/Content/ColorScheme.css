@@ -1,0 +1,41 @@
+﻿body {
+}
+
+.customNavbar{
+
+    background-color:white;
+}
+
+.navbar-nav > li > a {
+    color: #34005C;
+}
+
+.activeLink {
+    font-weight: 600;
+    background-color: #F0F0F0;
+}
+
+.btn{
+    background:transparent;
+    color:#34005C;
+    border:1px solid #34005C;
+}
+
+.btn:hover {
+    background: #34005C;
+    color: white;
+    border: 1px solid #34005C;
+}
+
+.btn:focus {
+    background: #34005C;
+    color: white;
+    border: 1px solid #34005C;
+}
+
+.btn:active {
+    background: #34005C;
+    color: white;
+    border: 1px solid #34005C;
+}
+    
