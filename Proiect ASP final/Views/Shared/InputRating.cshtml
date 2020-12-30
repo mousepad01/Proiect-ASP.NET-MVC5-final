@@ -1,19 +1,38 @@
 ﻿@model Proiect_ASP_final.Models.ProdusRating
-
-<div>
+<input id="modelRatingBuffer" type="hidden" value="@Model.rating" />
+<div class="panel-body">
     <form method="post" action="/ProdusRating/AdaugaRating/@Model.idProdus">
-
         <p class="text-danger">@ViewBag.eroare</p>
-
-        <label>Notă</label>
-        <input name="rating" type="number" value="@Model.rating" />
+        <label for="rating">Notă</label>
         <br />
-        <label>Descriere</label>
+        <label>
+            <input name="rating" id="s1" type="radio" onchange="set1()" value="1" />
+            <i id="is1" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s2" type="radio" onchange="set2()" value="2" />
+            <i id="is2" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s3" type="radio" onchange="set3()" value="3" />
+            <i id="is3" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s4" type="radio" onchange="set4()" value="4" />
+            <i id="is4" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s5" type="radio" onchange="set5()" value="5" />
+            <i id="is5" class="glyphicon glyphicon-star"></i>
+        </label>
+        <br />
+        <label for="descriereRating">Descriere</label>
+        <br />
         <input name="descriereRating" type="text" value="@Model.descriereRating" />
         <br />
-        <button class="btn" type="submit">Salvează review</button>
+        <br />
+        <button class="btn revbtn" type="submit">Salvează review</button>
     </form>
 </div>
-
 
 

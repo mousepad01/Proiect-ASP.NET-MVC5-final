@@ -6,11 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Proiect_ASP_final.Controllers
-{   
-    /* pentru operatiile CRUD ale categoriilor:
-     * admin ul are drepturi depline (stergere, adaugare, editare, vizualizare)
-     * restul utilizatorilor si cei neautentificati vor avea doar drept de vizualizare
-     */
+{
     [RequireHttps]
     public class CategorieController : Controller
     {
@@ -66,7 +62,13 @@ namespace Proiect_ASP_final.Controllers
 
             try
             {
-                if (ModelState.IsValid)
+                Categorie categAcelasiNume = (from categ in db.Categorii
+                                              where categ.titlu == categorieActualizata.titlu
+                                              select categ).SingleOrDefault();
+
+                bool numeUnic = categAcelasiNume == null;
+
+                if (ModelState.IsValid && numeUnic)
                 {
                     if (TryUpdateModel(categorieDeEditat))
                     {
@@ -77,16 +79,20 @@ namespace Proiect_ASP_final.Controllers
                     }
                     else
                     {
-                        ViewBag.categorie = categorieDeEditat;
+                        //ViewBag.categorie = categorieDeEditat;
+                        categorieActualizata.idCategorie = categorieDeEditat.idCategorie;
                         return View("FormEditare", categorieActualizata);
                     }
                 }
                 else
-                {
+                {   
+                    if(!numeUnic)
+                        TempData["eroareTitluUnic"] = "Există deja o categorie cu acest nume!";
+
                     categorieActualizata.idCategorie = categorieDeEditat.idCategorie;
                     return View("FormEditare", categorieActualizata);
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -95,7 +101,7 @@ namespace Proiect_ASP_final.Controllers
                 return View("ExceptieEditare");
             }
         }
-           
+
         //GET: afisarea form ului de adaugare a unei noi categorii
         [Authorize(Roles = "Admin")]
         public ActionResult Adaugare()
@@ -110,7 +116,13 @@ namespace Proiect_ASP_final.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                Categorie categAcelasiNume = (from categ in db.Categorii
+                                             where categ.titlu == categorieDeAdaugat.titlu
+                                             select categ).SingleOrDefault();
+
+                bool numeUnic = categAcelasiNume == null;
+
+                if (ModelState.IsValid && numeUnic)
                 {
                     Categorie categorieAdaugata = db.Categorii.Add(categorieDeAdaugat);  // returneaza obiectul adaugat
                     db.SaveChanges();
@@ -119,6 +131,9 @@ namespace Proiect_ASP_final.Controllers
                 }
                 else
                 {
+                    if (!numeUnic)
+                        TempData["eroareTitluUnic"] = "Există deja o categorie cu acest nume!";
+
                     return View("FormAdaugare", categorieDeAdaugat);
                 }
             }
@@ -144,7 +159,7 @@ namespace Proiect_ASP_final.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ViewBag.exceptie = e;
 

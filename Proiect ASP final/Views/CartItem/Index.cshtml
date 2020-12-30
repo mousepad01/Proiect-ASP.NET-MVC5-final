@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Coșul de cumpărături";
+}
+
+@model Proiect_ASP_final.Models.CartItem
+
+<h3>@ViewBag.mesaj</h3>
+<h1><i class="glyphicon glyphicon-shopping-cart"></i> Coșul dvs. conține:</h1>
+<br />
+
+@foreach (Proiect_ASP_final.Models.CartItem cartItem in ViewBag.cartItems)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>@cartItem.denumireProdus</h4>
+        </div>
+        <div class="panel-body">
+            Cantitate:
+            <br />
+            @using (Html.BeginForm("Modify", "CartItem", FormMethod.Post))
+            {
+                @Html.DropDownListFor(m => m.cantitate, Enumerable.Range(1, cartItem.cantitateMaxima).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString(), Selected = i == cartItem.cantitate }), new { onchange = "this.form.submit();", @name = "Cantitate", @SelectedValue = cartItem.cantitate, @class = "form-control" })
+                @Html.Hidden("Identifier", cartItem.id)
+            }
+            <br />
+            <form method="post" action="/CartItem/Stergere/@cartItem.id">
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+
+                <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-trash"></i> Șterge acest produs din coș</button>
+            </form>
+        </div>
+    </div>
+}
+
+<h3>Total: @ViewBag.total</h3>
+<form method="post" action="/Comanda/Adaugare">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+
+    <button class="btn btn-info" type"submit"><i class="glyphicon glyphicon-send"></i> Plasează comandă</button>
+</form>

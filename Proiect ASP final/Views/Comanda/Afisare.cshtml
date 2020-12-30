@@ -1,1 +1,44 @@
-﻿
+﻿@{
+    ViewBag.Title = "Afișare comandă";
+}
+
+@model Proiect_ASP_final.Models.Comanda
+
+<h2><i class="glyphicon glyphicon-shopping-cart"></i> Comanda cu ID @Model.idComanda</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        Adresa la care aceasta a fost comandată: @ViewBag.adresa.tara, @ViewBag.adresa.oras, Str. @ViewBag.adresa.strada, Nr. @ViewBag.adresa.nr, @ViewBag.adresa.bloc.
+        <br />
+        Data plasare: @Model.dataPlasare
+        <br />
+        Dată finalizare: @(@Model.dataFinalizare == @Model.dataPlasare ? "Comanda nefinalizată de către un administrator" : @Model.dataFinalizare.ToString())
+        <br />
+        Suma totală: @Model.sumaDePlata
+        <br />
+    </div>
+
+</div>
+@if (ViewBag.isAdmin != null && ViewBag.nefinalizata == true)
+{
+    <a class="btn btn-confirm" href="/Comanda/Confirma/@Model.idComanda"><i class="glyphicon glyphicon-send"></i> Finalizează această comanda</a>
+    <br />
+}
+<br />
+<a class="btn btn-info" href="/Comanda"><i class="glyphicon glyphicon-arrow-left"></i> Reveniți la lista de comenzi</a>
+<br />
+<h3>Produsele comandate în această comandă sunt:</h3>
+<br />
+@foreach (Proiect_ASP_final.Models.ProdusComandat produsComandat in @ViewBag.produseComandate)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4><a href=/Produs/Afisare/@produsComandat.idProdus><i class="glyphicon glyphicon-link"></i> @produsComandat.denumireProdus</a></h4>
+        </div>
+        <div class="panel-body">
+            Cantitate: @produsComandat.cantitate
+            <br />
+        </div>
+    </div>
+    <br />
+}

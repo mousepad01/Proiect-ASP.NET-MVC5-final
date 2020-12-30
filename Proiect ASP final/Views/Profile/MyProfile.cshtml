@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "MyProfile";
+}
+
+<h2>Contul meu:</h2>
+<br />
+
+Email: @ViewBag.user.Email
+<br />
+Username: @ViewBag.user.UserName
+<br />
+@if (User.IsInRole("User"))
+{
+    <a href="/Comanda/Index">Comenzile mele</a>
+    <br />
+    <a href="/Adresa/Index">Adresele mele</a>
+}
+@if (User.IsInRole("Seller"))
+{
+    <a href="/Produs/MyProducts">Produsele mele</a>
+}
+<br />
+

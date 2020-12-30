@@ -2,7 +2,11 @@
 
 <br />
 <div class="form-group">
-    @Html.LabelFor(m => m.titlu, "Titlu - Trebuie să conțină între 2 și 100 de caractere")
+    @if (TempData["eroareTitluUnic"] != null)
+    {
+        <p class="text-danger">@TempData["eroareTitluUnic"]</p>
+    }
+    @Html.LabelFor(m => m.titlu, "Titlu - Trebuie să conțină între 2 și 100 de caractere și să fie unic")
     <br />
     @Html.ValidationMessageFor(m => m.titlu, null, new { @class = "text-danger" })
     <br />

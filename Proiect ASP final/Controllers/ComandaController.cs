@@ -1,4 +1,5 @@
-﻿using Proiect_ASP_final.Models;
+﻿using Microsoft.AspNet.Identity;
+using Proiect_ASP_final.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +11,38 @@ namespace Proiect_ASP_final.Controllers
     [RequireHttps]
     public class ComandaController : Controller
     {
-        /*
-         * Eu am facut operatiile CRUD normale pe entitatea asta, dar nu functioneaza deocamdata
-         * Nici nu am terminat-o deoarece sunt inca nesigur de unele idei de implementare
-         * Am explicat mai jos ce vreau sa spun, ca ea ar trebui sa aiba operatiile CRUD facute intr-un mod special
-         */
-
         private Models.ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Luam toate comenzile - teoretic doar admin-ul ar trebui sa vada asta
-        // Ar trebui si un GET doar pentru un singur user, dar e redundant atunci cand nu avem userii implementati
+        [Authorize(Roles = "User,Admin")]
         public ActionResult Index()
         {
-            var comenzi = from a in db.Comenzi
-                         select a;
+            var userId = User.Identity.GetUserId();
 
-            ViewBag.comenzi = comenzi;
+            ViewBag.isAdmin = false;
+            if (User.IsInRole("Admin"))
+                ViewBag.isAdmin = true;
+
+            if (ViewBag.isAdmin)
+            {
+                var comenzi = from a in db.Comenzi
+                              select a;
+                ViewBag.comenzi = comenzi;
+
+                if (comenzi.Any())
+                    ViewBag.areComenzi = true;
+            }
+            else
+            {
+                var comenzi = from a in db.Comenzi
+                                  where a.idUtilizator == userId
+                                  select a;
+
+                ViewBag.comenzi = comenzi;
+
+                if (comenzi.Any())
+                    ViewBag.areComenzi = true;
+            }
+                
 
             if (TempData["mesaj"] != null)
                 ViewBag.mesaj = TempData["mesaj"];
@@ -33,50 +50,27 @@ namespace Proiect_ASP_final.Controllers
             return View();
         }
 
-        // La afisare ar trebui sa-si vada un utilizator o singura comanda
-        public ActionResult Afisare(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Confirma(int id)
         {
-            Comanda adresaCautata = db.Comenzi.Find(id);
-            return View(adresaCautata);
-        }
-
-        // Editarea nu ar trebui sa existe pe comanda daca ea a fost finalizata (trimisa)
-        // Admin-ul ar trebui sa poata sa seteze cand ea a fost trimisa (un buton prin care dataFinalizare = DateTime.Now();) si astfel ea nu mai poate fi editata de nimeni
-        // O idee ar fi si ca adminul sa editeze comanda ca o "verificare" si astfel editare = trimitere, si setam atunci dataFinalizare
-        public ActionResult Editare(int id)
-        {
-            Comanda comandaDeEditat = db.Comenzi.Find(id);
-            comandaDeEditat.Adrese = GetAllAdresses();
-
-            return View("FormEditare", comandaDeEditat);
-        }
-        
-        [HttpPut]
-        public ActionResult Editare(int id, Comanda comandaActualizata)
-        {
-            Comanda comandaDeEditat = db.Comenzi.Find(id);
-            comandaActualizata.dataFinalizare = DateTime.Now;
-
             try
             {
-                if (ModelState.IsValid)
-                {
-                    if (TryUpdateModel(comandaDeEditat))
-                    {
-                        comandaDeEditat = comandaActualizata;
-                        db.SaveChanges();
+                Comanda comandaDeConfirmat = db.Comenzi.Find(id);
+                var isAdmin = false;
+                if (User.IsInRole("Admin"))
+                    isAdmin = true;
 
-                        return RedirectToAction("Afisare", new { id = id });
-                    }
-                    else
-                    {
-                        return View("FormEditare", comandaActualizata);
-                    }
-                }
-                else
+                if (isAdmin && comandaDeConfirmat.dataPlasare == comandaDeConfirmat.dataFinalizare)
                 {
-                    return View("FormEditare", comandaActualizata);
+                    comandaDeConfirmat.dataFinalizare = DateTime.Now;
+                    db.SaveChanges();
+                    TempData["mesaj"] = "Comanda a fost confirmată cu succes!";
+                    return RedirectToAction("Index");
+
                 }
+
+                TempData["mesaj"] = "Nu aveți permisiunea să confirmați această comandă!";
+                return RedirectToAction("Index");
             }
             catch (Exception e)
             {
@@ -84,52 +78,148 @@ namespace Proiect_ASP_final.Controllers
             }
         }
 
-        // Adaugarea ar trebui sa fie atunci cand ai plasat comanda. Astfel s-ar sterge produsele din cos (nu stiu deocamdata cum le retinem, trebuie discutat)
+        [Authorize(Roles = "Admin,User")]
+        public ActionResult Afisare(int id)
+        {
+            Comanda comandaCautata = db.Comenzi.Find(id);
+            Adresa adresa = db.Adrese.Find(comandaCautata.idAdresa);
+            var produseComandate = from pc in db.ProduseComandate
+                                   where pc.idComanda == id
+                                   select pc;
+            ViewBag.produseComandate = produseComandate;
+            ViewBag.adresa = adresa;
+
+            if (User.IsInRole("Admin"))
+                ViewBag.isAdmin = true;
+
+            if (comandaCautata.dataFinalizare == comandaCautata.dataPlasare)
+                ViewBag.nefinalizata = true;
+
+            return View(comandaCautata);
+        }
+
+        [Authorize(Roles = "User")]
         public ActionResult Adaugare()
         {
+            String userId = User.Identity.GetUserId();
             Comanda comanda = new Comanda();
+
+            comanda.idUtilizator = userId;
             comanda.Adrese = GetAllAdresses();
 
             return View("FormAdaugare", comanda);
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
         public ActionResult Adaugare(Comanda comandaDeAdaugat)
         {
+            String userId = User.Identity.GetUserId();
+            var cartItems = (from cp in db.CartItems
+                            where cp.idUtilizator == userId
+                            select cp).ToList<CartItem>();
+
             comandaDeAdaugat.dataPlasare = DateTime.Now;
+            comandaDeAdaugat.dataFinalizare = DateTime.Now;
+            comandaDeAdaugat.idUtilizator = userId;
+            comandaDeAdaugat.sumaDePlata = 0;
+
+            System.Diagnostics.Debug.WriteLine(comandaDeAdaugat.idAdresa);
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Comanda comandaAdaugata = db.Comenzi.Add(comandaDeAdaugat);
-                    db.SaveChanges();
+                    foreach (CartItem cartItem in cartItems)
+                    {
+                        Produs produs = db.Produse.Find(cartItem.idProdus);
+                        if (produs.cantitate != 0)
+                        {
+                            // Adaug un prouds nou comandat
+                            ProdusComandat produsComandat = new ProdusComandat();
+                            produsComandat.idComanda = comandaDeAdaugat.idComanda;
+                            produsComandat.idProdus = produs.idProdus;
+                            produsComandat.denumireProdus = produs.titlu;
+                            // Scad cantitatea si adaug la suma pretul produsului * cantitate
+                            int cantitateScazuta = cartItem.cantitate < produs.cantitate ? cartItem.cantitate : produs.cantitate;
+                            produsComandat.cantitate = cantitateScazuta;
+                            produs.cantitate -= cantitateScazuta;
+                            comandaDeAdaugat.sumaDePlata += cantitateScazuta * produs.pret;
+                            db.ProduseComandate.Add(produsComandat);
 
-                    return RedirectToAction("Afisare", new { id = comandaAdaugata.idComanda });
+                            // Aici verific ca alte comenzi sa nu depaseasca pretul produselor (daca un produs nu mai e in stoc, se sterge automat din cosul utilizatorului)
+                            var alteComenzi = (from ac in db.CartItems
+                                              where ac.idProdus == produs.idProdus
+                                              select ac).ToList<CartItem>();
+
+                            if (produs.cantitate != 0)
+                            {
+                                foreach (CartItem altaComanda in alteComenzi)
+                                {
+                                    altaComanda.cantitate = altaComanda.cantitate < produs.cantitate ? altaComanda.cantitate : produs.cantitate;
+                                    altaComanda.cantitateMaxima -= cantitateScazuta;
+                                }
+                            }
+                            else
+                            {
+                                foreach (CartItem altaComanda in alteComenzi)
+                                    db.CartItems.Remove(altaComanda);
+                            }
+                            
+                            // Sterg produsul din cosul utilizatorului
+                            CartItem cartItemDeSters = db.CartItems.Find(cartItem.id);
+                            db.CartItems.Remove(cartItemDeSters);
+                        }
+                    }
+
+                    db.Comenzi.Add(comandaDeAdaugat);
+                    db.SaveChanges();
+                       
+                    return RedirectToAction("Afisare", new { id = comandaDeAdaugat.idComanda });
                 }
                 else
                 {
+                    comandaDeAdaugat.Adrese = GetAllAdresses();
                     return View("FormAdaugare", comandaDeAdaugat);
                 }
             }
-            catch (Exception e)
+            // Catch-ul asta e aici doar in cazul in care mai apar erori cu comenzile (am avut destule)
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
-                return View();
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
             }
         }
 
-        // Ar trebui sa fie posibil de facut doar de catre un admin
         [HttpDelete]
+        [Authorize(Roles = "Admin,User")]
         public ActionResult Stergere(int id)
         {
             try
             {
                 Comanda comandaDeSters = db.Comenzi.Find(id);
-                db.Comenzi.Remove(comandaDeSters);
+                var isAdmin = false;
+                if (User.IsInRole("Admin"))
+                    isAdmin = true;
 
-                db.SaveChanges();
+                if ((comandaDeSters.idUtilizator != User.Identity.GetUserId() && comandaDeSters.dataPlasare == comandaDeSters.dataFinalizare) || isAdmin == true)
+                {
+                    db.Comenzi.Remove(comandaDeSters);
+                    db.SaveChanges();
+                    TempData["mesaj"] = "Comanda a fost stearsa cu succes!";
+                    return RedirectToAction("Index");
+                }
 
-                TempData["mesaj"] = "Comanda a fost stearsa cu succes!";
-
+                TempData["mesaj"] = "Nu este posibil să ștergeți această comandă!";
                 return RedirectToAction("Index");
             }
             catch (Exception e)
@@ -150,7 +240,7 @@ namespace Proiect_ASP_final.Controllers
                 selectList.Add(new SelectListItem
                 {
                     Value = adresa.idAdresa.ToString(),
-                    Text = adresa.strada.ToString() // Ar trebui adaugat un titlu al adresei pentru a putea fi gasita aici
+                    Text = adresa.tara.ToString() + ", " + adresa.oras.ToString() + ", Str. " + adresa.strada.ToString() + ", Nr. " + adresa.nr.ToString()
                 });
             }
 

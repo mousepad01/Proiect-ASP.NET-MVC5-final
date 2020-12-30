@@ -1,29 +1,46 @@
 ﻿@{
-    ViewBag.Title = "Comenzi";
+    ViewBag.Title = "Comenzile mele";
 }
 
-<h2>@ViewBag.mesaj</h2>
-<h1>Lista completă a comenzilor:</h1>
-<br />
-
-@foreach (var comanda in ViewBag.comenzi)
+@if (ViewBag.mesaj != null)
 {
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @comanda.idAdresa
-        </div>
-        <div class="panel-body">
-            Data plasare: @comanda.dataPlasare
-            <br />
-            Data finalizare: @(@comanda.dataFinalizare == null ? "Comanda nefinalizata" : comanda.DataFinalizare)
-            <br />
-        </div>
-        <div class="panel panel-footer">
-            <a class="btn btn-primary" href="/Adresa/Afisare/@comanda.idAdresa">Afișează comanda</a>
-            <br />
-        </div>
-    </div>
+    <h2>@ViewBag.mesaj</h2>
+    <br />
 }
 
-<br />
-<a class="btn btn-success" href="/Comanda/Adaugare" role="button">Adaugă o noua comanda</a>
+
+@if (ViewBag.areComenzi == null && ViewBag.isAdmin)
+{
+    <h1>Nu există nici o comandă adăugată.</h1>
+    <br />
+}
+else if (ViewBag.areComenzi == null && !ViewBag.isAdmin)
+{
+    <h1>Nu aveți nici o comandă adăugată.</h1>
+    <br />
+}
+else
+{
+    <h1>Lista completă a comenzilor:</h1>
+
+    foreach (var comanda in ViewBag.comenzi)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>ID Comanda: @comanda.idComanda</h4>
+            </div>
+            <div class="panel-body">
+                Data plasare: @comanda.dataPlasare
+                <br />
+                Data finalizare: @(@comanda.dataFinalizare == @comanda.dataPlasare ? "Comanda nefinalizata" : comanda.dataFinalizare)
+                <br />
+                Sumă: @comanda.sumaDePlata
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-primary" href="/Comanda/Afisare/@comanda.idComanda"><i class="glyphicon glyphicon-search"></i> Afișează comanda</a>
+                <br />
+            </div>
+        </div>
+    }
+}
+

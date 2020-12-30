@@ -7,9 +7,10 @@
 
 <h3>@ViewBag.mesaj</h3>
 
-<h2>@Model.titlu</h2>
+<h2 class="prodTitle">@Model.titlu</h2>
+<i class="glyphicon glyphicon-chevron-right"></i>
 @foreach (var categ in Model.CategoriiAsociate)
-{   
+{
     <a href="/Categorie/Afisare/@categ.Value">@categ.Text</a>
 }
 <br />
@@ -21,111 +22,180 @@
         <p class="text-warning">Produsul nu a fost (încă) aprobat!</p>
 
         if (User.IsInRole("Admin"))
-        {   
-        <form method="post" action="/Produs/AprobareProdus/@Model.idProdus">
-            @Html.HttpMethodOverride(HttpVerbs.Put)
-            <button class="btn">Aprobă acest produs</button>
-        </form>
-        }
-    }
-    <div class="panel-body">
-        <div class="row">
-            <div class="col col-md-4">
-                <i class="glyphicon glyphicon-user"></i> Producător: @Model.numeOwner
-            </div>
-            <div class="col col-md-4">
-                <i class="glyphicon glyphicon-tag"></i> Preț: @Model.pret
-            </div>
-            <div class="col col-md-4">
-                <i class="glyphicon glyphicon-question-sign"></i> Cantitate disponibilă: @Model.cantitate
-            </div>
-            <div class="col col-md-4">
-                <i class="glyphicon glyphicon-star"></i> Rating:
-                @if (Model.nrRatinguri == 0)
-                {
-                    @: (Nici un rating)
-                }
-                else
-                {
-                    @Model.ratingMediu @:(@Model.nrRatinguri rewiew - uri)
-                }
-
-            </div>
-        </div>
-        <br />
-        @Model.descriere
-        <br />
-        <br />
-        <i class="glyphicon glyphicon-calendar"></i> Adăugat la data de: @Model.dataAdaugare
-    </div>
-    <div class="panel panel-footer">
-
-        @if (ViewBag.accesStergereProdus == true)
         {
-            <form method="post" action="/Produs/Stergere/@Model.idProdus">
-                @Html.HttpMethodOverride(HttpVerbs.Delete)
-
-                <button class="btn btn-danger" type="submit">Șterge permanent acest produs</button>
-            </form>
-        }
-        @if (ViewBag.accesEditareProdus == true)
-        {
-            <br />
-            <a class="btn btn-info" href="/Produs/Editare/@Model.idProdus" role="button">Editează acest produs</a>
-        }
-
-    </div>
-    @foreach (var rev in ViewBag.ratinguri)
-    {
-        <br />
-        <p>@rev.numeUtilizator</p>
-        <p>@rev.rating</p>
-        <p>@rev.descriereRating</p>
-        <small>@rev.dataReview</small>
-        <br />
-        if (rev.idUtilizator == User.Identity.GetUserId())
-        {
-            if (ViewBag.EroareEditareRating == rev.prodRating)
-            {
-                <div class="reviewEditare">
-                    @Html.Partial("EditareRating", new Proiect_ASP_final.Models.ProdusRating { prodRating = ViewBag.ratingEronatEditare.prodRating, idProdus = ViewBag.ratingEronatEditare.idProdus, rating = ViewBag.ratingEronatEditare.rating, descriereRating = ViewBag.ratingEronatEditare.descriereRating })
-                </div>
-            }
-            else
-            {
-                <button class="btn" onclick="editeaza(@rev.prodRating)">Editează acest review</button>
-                <div id="reviewEditare_@rev.prodRating"></div>
-            }
-            <br />
-        }
-        if (rev.idUtilizator == User.Identity.GetUserId() || User.IsInRole("Admin"))
-        {
-            <form method="post" action="/ProdusRating/StergeRating/@rev.prodRating">
-                @Html.HttpMethodOverride(HttpVerbs.Delete)
-                <button class="btn" type="submit">Șterge acest review</button>
+            <form method="post" action="/Produs/AprobareProdus/@Model.idProdus">
+                @Html.HttpMethodOverride(HttpVerbs.Put)
+                <button class="btn">Aprobă acest produs</button>
             </form>
         }
     }
-    @if (User.Identity.IsAuthenticated)
-    {
-        if (ViewBag.EroareNouRating == true)
+    <img class="prodimg" src="@Model.imagePath" />
+    <div class="panel-body price">@Model.pret LEI</div>
+    <div class="panel-body ratings">
+        @if (Model.nrRatinguri == 0)
         {
-            <div id="reviewNou">
-                @Html.Partial("InputRating", new Proiect_ASP_final.Models.ProdusRating { idProdus = ViewBag.ratingEronatAdaugare.idProdus, rating = ViewBag.ratingEronatAdaugare.rating, descriereRating = ViewBag.ratingEronatAdaugare.descriereRating })
-            </div>
+            @: (Nici un rating)
         }
         else
         {
-            <button class="btn" id="ratingNouBtn" value="@Model.idProdus">Adaugă un nou review</button>
-            <div id="reviewNou"></div>
+            for (int i = 1; i <= Model.ratingMediu; i++)
+            {
+                <i class="glyphicon glyphicon-star full"></i>
+            }
+            for (int i = Model.ratingMediu + 1; i <= 5; i++)
+            {
+                <i class="glyphicon glyphicon-star"></i>
+            }
+            if (Model.nrRatinguri == 1)
+            {
+                @:Un review
+            }
+            else
+            {
+                @Model.nrRatinguri @:review-uri
+            }
         }
+    </div>
+
+    @if (ViewBag.accesStergereProdus == true)
+    {
+
+        if (ViewBag.accesEditareProdus == true)
+        {
+
+            <div class="panel-body prodBtn">
+                <br />
+                <a class="btn prod" href="/Produs/Editare/@Model.idProdus" role="button">Editează acest produs</a>
+            </div>
+
+        }
+
+        <div class="panel-body prodBtn">
+            <br />
+            <form method="post" action="/Produs/Stergere/@Model.idProdus">
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                <button class="btn prod" type="submit">Șterge acest produs</button>
+            </form>
+        </div>
+
+    }
+    else
+    {
+        <div class="panel-body prodBtn">
+            <br />
+            <form method="post" action="/CartItem/Create?idProdus=@Model.idProdus">
+                @if (Model.cantitate == 0)
+                {
+                    <button type="submit" class="btn prod" disabled>
+                        Produs indisponibil
+                    </button>
+                }
+                else
+                {
+                    <button class="btn prod" type="submit">
+                        Adaugă în coș
+                    </button>
+                }
+            </form>
+        </div>
     }
 
+
+
+    <div class="panel-body" id="dropdownInfo">
+        <i id="dropdownIconInfo" class="glyphicon glyphicon-chevron-down"></i><p id="dropActivateInfo"> Informații suplimentare</p>
+        <div id="dropdownContentInfo">
+
+            <div class="panel-body">
+                Producător: <p id="producator">@Model.numeOwner</p>
+            </div>
+
+            <div class="panel-body">
+                @Model.descriere
+            </div>
+
+            <div class="panel-body dataAdd">
+                <i class="glyphicon glyphicon-calendar"></i> Adăugat la data de: @Model.dataAdaugare
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body" id="dropdownReview">
+        <i id="dropdownIconReview" class="glyphicon glyphicon-chevron-up"></i><p id="dropActivateReview"> Review-uri</p>
+        <div id="dropdownContentReview">
+
+            @foreach (var rev in ViewBag.ratinguri)
+            {
+                <br />
+                <i class="glyphicon glyphicon-user"></i><p class="userBold">@rev.numeUtilizator</p>
+                <br />
+                for (int i = 1; i <= rev.rating; i++)
+                {
+                    <i class="glyphicon glyphicon-star full"></i>
+                }
+                for (int i = rev.rating + 1; i <= 5; i++)
+                {
+                    <i class="glyphicon glyphicon-star"></i>
+                }
+                <br />
+                <br />
+                <p>@rev.descriereRating</p>
+
+                <div class="dataAdd">
+                    <i class="glyphicon glyphicon-calendar"></i> @rev.dataReview
+                </div>
+                <br />
+                if (rev.idUtilizator == User.Identity.GetUserId())
+                {
+                    if (ViewBag.EroareEditareRating == rev.prodRating)
+                    {
+                        <div class="reviewEditare revbtn">
+                            @Html.Partial("EditareRating", new Proiect_ASP_final.Models.ProdusRating { prodRating = ViewBag.ratingEronatEditare.prodRating, idProdus = ViewBag.ratingEronatEditare.idProdus, rating = ViewBag.ratingEronatEditare.rating, descriereRating = ViewBag.ratingEronatEditare.descriereRating })
+                        </div>
+                    }
+                    else
+                    {
+
+                        <button class="btn revbtn" onclick="editeaza(@rev.prodRating, @rev.rating)"><i class="glyphicon glyphicon-pencil"></i> Editează acest review</button>
+                        <div id="reviewEditare_@rev.prodRating"></div>
+                    }
+                    <br />
+                }
+                if (rev.idUtilizator == User.Identity.GetUserId() || User.IsInRole("Admin"))
+                {
+                    <form method="post" action="/ProdusRating/StergeRating/@rev.prodRating">
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button class="btn revbtn" type="submit"><i class="glyphicon glyphicon-trash"></i> Șterge acest review</button>
+                    </form>
+                }
+                <hr />
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (ViewBag.EroareNouRating == true)
+                {
+                    <div id="reviewNou">
+                        @Html.Partial("InputRating", new Proiect_ASP_final.Models.ProdusRating { idProdus = ViewBag.ratingEronatAdaugare.idProdus, rating = ViewBag.ratingEronatAdaugare.rating, descriereRating = ViewBag.ratingEronatAdaugare.descriereRating })
+                    </div>
+                }
+                else
+                {
+                    <button class="btn revbtn" id="ratingNouBtn" value="@Model.idProdus"><i class="glyphicon glyphicon-plus"></i> Adaugă un nou review</button>
+                    <div id="reviewNou"></div>
+                }
+            }
+
+        </div>
+    </div>
+    <br />
+    <br />
 </div>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/ButoaneRating.js"></script>
-
-
+@Scripts.Render("~/bundles/ratingscr")
+@Scripts.Render("~/bundles/dropdown")
+@Scripts.Render("~/bundles/ratinginput")
 
 
 

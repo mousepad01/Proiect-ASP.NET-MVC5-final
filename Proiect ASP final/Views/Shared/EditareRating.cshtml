@@ -1,18 +1,37 @@
 ﻿@model Proiect_ASP_final.Models.ProdusRating
-
-<div>
+<div class="panel-body">
     <form method="post" action="/ProdusRating/EditeazaRating/@Model.prodRating">
         @Html.HttpMethodOverride(HttpVerbs.Put)
-
         <p class="text-danger">@ViewBag.eroare</p>
-
-        <label>Notă</label>
-        <input name="rating" type="number" value="@Model.rating" />
+        <label for="rating">Notă</label>
         <br />
-        <label>Descriere</label>
+        <label>
+            <input name="rating" id="s1Edit_@Model.prodRating" type="radio" onchange="set1Edit(@Model.prodRating)" value="1" />
+            <i id="is1Edit_@Model.prodRating" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s2Edit_@Model.prodRating" type="radio" onchange="set2Edit(@Model.prodRating)" value="2" />
+            <i id="is2Edit_@Model.prodRating" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s3Edit_@Model.prodRating" type="radio" onchange="set3Edit(@Model.prodRating)" value="3" />
+            <i id="is3Edit_@Model.prodRating" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s4Edit_@Model.prodRating" type="radio" onchange="set4Edit(@Model.prodRating)" value="4" />
+            <i id="is4Edit_@Model.prodRating" class="glyphicon glyphicon-star"></i>
+        </label>
+        <label>
+            <input name="rating" id="s5Edit_@Model.prodRating" type="radio" onchange="set5Edit(@Model.prodRating)" value="5" />
+            <i id="is5Edit_@Model.prodRating" class="glyphicon glyphicon-star"></i>
+        </label>
+        <br />
+        <label for="descriereRating">Descriere</label>
+        <br />
         <input name="descriereRating" type="text" value="@Model.descriereRating" />
         <br />
-        <button class="btn" type="submit">Salvează review</button>
+        <br />
+        <button class="btn revbtn" type="submit">Salvează review</button>
     </form>
 </div>
 

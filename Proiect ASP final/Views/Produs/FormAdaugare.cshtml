@@ -7,12 +7,11 @@
 
 <h2>Adauga un nou produs (functionalitatea ar trebui sa fie disponibila doar utilizatorilor colaboratori)</h2>
 <br />
-<form method="post" action="/Produs/Adaugare">
+<form method="post" action="/Produs/Adaugare" enctype="multipart/form-data">
 
     @Html.Partial("InputProdus", @Model)
-
+    <label for="categoriiForm">Categoriile din care produsul face parte</label>
     <select id="categoriiForm" class="form-control" name="categoriiDeAdaugatId" multiple>
-
         @foreach (var categ in Model.CategoriiAsociate)
         {
             <option value="@categ.Value" selected>@categ.Text</option>
@@ -21,10 +20,14 @@
         {
             <option value="@categ.Value">@categ.Text</option>
         }
-
     </select>
     <p for="categoriiForm" class="text-danger">@ViewBag.eroareCategoriiLipsa</p>
     <br />
+    <br />
+    <label for="imgProdus">Imaginea produsului</label>
+    <input type="file" name="imgProdus" />
+    <br />
+    <p for="imgProdus" class="text-danger">@ViewBag.eroareImagineProdus</p>
+    <br />
     <button class="btn btn-success" type="submit">Adaugă noul produs</button>
-
 </form>

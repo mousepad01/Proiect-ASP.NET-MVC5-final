@@ -1,9 +1,10 @@
 ﻿body {
+    font-size:16px;
 }
 
 .customNavbar{
-
     background-color:white;
+    font-size:18px;
 }
 
 .navbar-nav > li > a {
@@ -15,10 +16,15 @@
     background-color: #F0F0F0;
 }
 
-.btn{
-    background:transparent;
-    color:#34005C;
-    border:1px solid #34005C;
+.btn {
+    background: transparent;
+    color: #34005C;
+    border: 1px solid #34005C;
+    transition: 0.15s;
+}
+
+.fitb {
+    width: 100%;
 }
 
 .btn:hover {
@@ -38,4 +44,143 @@
     color: white;
     border: 1px solid #34005C;
 }
+
+a {
+    color: #34005C;
+    text-decoration:none;
+    transition: 0.15s;
+}
+a:hover {
+    color: #34005C;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:focus {
+    color: #34005C;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.prodimg{
+    max-width:100%;
+    padding-left:5vw;
+    padding-right:5vw;
+    padding-top:5vh;
+    padding-bottom:3vh;
+}
+
+.price {
+    padding-left: 5vw;
+    font-size: xxx-large;
+    font-weight: 600;
+    color: #34005C;
+}
+
+.prodTitle{
+    font-size:xxx-large;
+    font-weight:600;
+}
+
+.ratings {
+    padding-left: 5vw;
+    padding-top: 0;
+}
+
+.full {
+    color: orange;
+}
+
+.btn.prod{
+    font-size:x-large;
+    padding-left:5vw;
+    padding-right:5vw;
+    width:100%;
+    white-space:normal;
+}
+
+.prodBtn{
+    padding-left: 5vw;
+    padding-top: 0;
+    width:40%;
+}
+
+#dropdownInfo{
+    padding-left:5vw;
+    font-size:x-large;
+}
+
+#dropdownContentInfo {
+    display: none;
+    position: relative;
+    padding-left: 3%;
+    padding-top: 3vh;
+    font-size: medium;
+}
+
+#producator {
+    color: #34005C;
+    font-weight:600;
+    display:inline-block;
+}
+
+.dataAdd {
+    color: #7E7C7F;
+    font-size:small;
+    display:inline-block;
+}
+
+#dropdownReview {
+    padding-left: 5vw;
+    font-size: x-large;
+}
+
+#dropdownContentReview {
+    display: block;
+    position: relative;
+    padding-left: 3%;
+    padding-top: 3vh;
+    font-size:medium;
+}
+
+#dropActivateReview{
+    margin:0;
+    display:inline-block;
+}
+
+#dropActivateInfo {
+    margin: 0;
+    display: inline-block;
+}
+
+.bar {
+    border-top: 1px solid;
+    color: #7E7C7F;
+}
+
+.userBold {
+    font-weight: 600;
+    color: #34005C;
+    display:inline-block;
+    padding-left:1vw;
+}
+
+.revbtn {
+    width: 20%;
+    white-space: normal;
+}
+
+[type="radio"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+
+
+
+
+
+
     

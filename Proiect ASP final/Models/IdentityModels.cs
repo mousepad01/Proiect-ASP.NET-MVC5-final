@@ -33,6 +33,8 @@ namespace Proiect_ASP_final.Models
         public DbSet<ProdusRating> ProduseRatinguri { get; set; }
         public DbSet<Adresa> Adrese { get; set; }
         public DbSet<Comanda> Comenzi { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<ProdusComandat> ProduseComandate { get; set; }
 
         public static ApplicationDbContext Create()
         {

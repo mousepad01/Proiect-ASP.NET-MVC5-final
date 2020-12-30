@@ -21,10 +21,16 @@ namespace Proiect_ASP_final
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/navbar").Include("~/Scripts/NavBarScript.js"));
+            bundles.Add(new ScriptBundle("~/bundles/ratingscr").Include("~/Scripts/ButoaneRating.js"));
+            bundles.Add(new ScriptBundle("~/bundles/dropdown").Include("~/Scripts/DropdownProdScript.js"));
+            bundles.Add(new ScriptBundle("~/bundles/ratinginput").Include("~/Scripts/RatingInputScript.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/ColorScheme.css"));
         }
     }
 }

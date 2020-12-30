@@ -55,9 +55,9 @@ namespace Proiect_ASP_final
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "213159137009779",
+               appSecret: "e005ec4ab7a6e18d72286dcd035112d7");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {

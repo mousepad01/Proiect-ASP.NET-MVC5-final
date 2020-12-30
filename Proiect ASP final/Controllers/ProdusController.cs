@@ -3,6 +3,7 @@ using Proiect_ASP_final.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +22,7 @@ namespace Proiect_ASP_final.Controllers
             var produse = from p in db.Produse
                           where p.aprobat == true
                           select p;
+
 
             // pentru a afisa intervalele default de filtre
             int pretMax = produse.Max(produs => produs.pret);
@@ -87,6 +89,65 @@ namespace Proiect_ASP_final.Controllers
                 ViewBag.arataNeaprobate = false;
 
             return View();
+        }
+
+        [Authorize(Roles = "Seller")]
+        public ActionResult MyProducts()
+        {
+            String userId = User.Identity.GetUserId();
+            var produse = from p in db.Produse
+                           where p.idOwner == userId 
+                           where p.aprobat == true
+                           select p;
+
+            var produseNeaprobate = from p in db.Produse
+                                    where p.idOwner == userId
+                                    where p.aprobat == false
+                                    select p;
+
+            int pretMax = produse.Max(produs => produs.pret);
+            int pretMin = produse.Min(produs => produs.pret);
+
+            int ratingMin = produse.Min(produs => produs.ratingMediu);
+            int ratingMax = produse.Max(produs => produs.ratingMediu);
+
+            DateTime dataMax = produse.Max(produs => produs.dataAdaugare);
+            DateTime dataMin = produse.Min(produs => produs.dataAdaugare);
+
+            ViewBag.produse = produse;
+
+            ViewBag.pretMax = pretMax;
+            ViewBag.pretMin = pretMin;
+
+            ViewBag.pretMinDefault = pretMin;
+            ViewBag.pretMaxDefault = pretMax;
+
+            ViewBag.ratingMin = ratingMin;
+            ViewBag.ratingMax = ratingMax;
+
+            ViewBag.ratingMinDefault = ratingMin;
+            ViewBag.ratingMaxDefault = ratingMax;
+
+            ViewBag.dataMax = dataMax;
+            ViewBag.dataMin = dataMin;
+
+            ViewBag.dataMaxDefault = dataMax;
+            ViewBag.dataMinDefault = dataMin;
+
+            ViewBag.selectedSort = "none";
+
+            if (produseNeaprobate.ToList().Count > 0)
+            {
+                ViewBag.arataNeaprobate = true;
+                ViewBag.produseNeaprobateProprii = produseNeaprobate;
+            }
+            else
+                ViewBag.arataNeaprobate = false;
+
+            if (TempData["mesaj"] != null)
+                ViewBag.mesaj = TempData["mesaj"];
+
+            return View("Index");
         }
 
         // POST PENTRU CĂ AȘA VREA FORMCOLLECTION, DAR PUTEA SĂ FIE GET: Lista produse sortate
@@ -414,7 +475,7 @@ namespace Proiect_ASP_final.Controllers
         // metoda care preia informatia din ambele form uri de editare (ale categoriilor, respectiv ale celorlalte informatii)
         [HttpPut]
         [Authorize(Roles = "Seller,Admin")]
-        public ActionResult SwitchEditare(int id, Produs produsActualizat, int[] categoriiActualizateId)
+        public ActionResult SwitchEditare(int id, Produs produsActualizat, int[] categoriiActualizateId, HttpPostedFileBase imagineNoua)
         {   
             // deja am facut verificarea permisiunii de editare la afisarea formularului de editate
             // dar verific si aici pentru cazul cand ar face request direct cu tot cu query string ul corespunzator
@@ -432,7 +493,7 @@ namespace Proiect_ASP_final.Controllers
                 if (!ok_categ)
                     ViewBag.eroareCategoriiLipsa = "Trebuie să selectați cel puțin o categorie";
 
-                bool ok_rest = Editare(id, produsActualizat);
+                bool ok_rest = Editare(id, produsActualizat, imagineNoua);
 
                 if (!ok_categ || !ok_rest)
                 {
@@ -443,6 +504,7 @@ namespace Proiect_ASP_final.Controllers
 
                     return View("FormEditare", produsActualizat);
                 }
+
                 else
                 {
                     TempData["mesaj"] = "Produsul a fost editat cu succes!";
@@ -545,17 +607,41 @@ namespace Proiect_ASP_final.Controllers
 
         // Editarea informatiilor unui produs FARA CATEGORIILE ASOCIATE
         [NonAction]
-        public bool Editare(int id, Produs produsActualizat)
+        private bool Editare(int id, Produs produsActualizat, HttpPostedFileBase imagineNoua)
         {
             Produs produsDeEditat = db.Produse.Find(id);
 
             try
             {
+                Produs prodAcelasiNume = (from p in db.Produse
+                                          where p.titlu == produsActualizat.titlu
+                                          select p).SingleOrDefault();
+
+                if(prodAcelasiNume != null && prodAcelasiNume.idProdus != id)
+                {
+                    TempData["eroareTitluUnic"] = "Există deja un produs cu acest nume!";
+                    return false;
+                }
+
                 if (ModelState.IsValid)
                 {
                     if (TryUpdateModel(produsDeEditat))
                     {
                         produsDeEditat = produsActualizat;
+
+                        if (imagineNoua != null && imagineNoua.ContentLength > 0 && (Path.GetExtension(imagineNoua.FileName) == ".jpg" || Path.GetExtension(imagineNoua.FileName) == ".png"))
+                        {
+                            StergereImagine(id);
+
+                            string internalImgName = User.Identity.GetUserName() + produsActualizat.titlu + Path.GetExtension(imagineNoua.FileName);
+
+                            string imgPath = Server.MapPath("/Content/Images/") + internalImgName;
+
+                            imagineNoua.SaveAs(imgPath);
+
+                            produsActualizat.imagePath = "/Content/Images/" + internalImgName;
+                        }
+
                         db.SaveChanges();
 
                         return true;
@@ -591,17 +677,45 @@ namespace Proiect_ASP_final.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Seller,Admin")]
-        public ActionResult Adaugare(Produs produsDeAdaugat, int[] categoriiDeAdaugatId)
+        public ActionResult Adaugare(Produs produsDeAdaugat, int[] categoriiDeAdaugatId, HttpPostedFileBase imgProdus)
         {
             try
             {
                 produsDeAdaugat.CategoriiAsociate = categoriiAsociate(produsDeAdaugat, categoriiDeAdaugatId);
 
-                if (ModelState.IsValid && produsDeAdaugat.CategoriiAsociate.Count() > 0)
+                var prodAcelasiNume = from p in db.Produse
+                                      where p.titlu == produsDeAdaugat.titlu
+                                      select p;
+
+                bool numeUnic = prodAcelasiNume.SingleOrDefault() == null;
+
+                if (ModelState.IsValid && produsDeAdaugat.CategoriiAsociate.Count() > 0 && numeUnic)
                 {
                     Categorie[] categoriiDeAdaugat = categoriiDinId(categoriiDeAdaugatId);
 
                     produsDeAdaugat.dataAdaugare = DateTime.Now;
+
+                    // validarea existentei imaginii o fac aici pentru a trece de ModelState.IsValid
+                    // deoarece produsul nu va avea un imgPath setat in acel punct
+
+                    if (imgProdus != null && imgProdus.ContentLength > 0 && (Path.GetExtension(imgProdus.FileName) == ".jpg" || Path.GetExtension(imgProdus.FileName) == ".png"))
+                    {
+                        string internalImgName = User.Identity.GetUserName() + produsDeAdaugat.titlu + Path.GetExtension(imgProdus.FileName);
+
+                        string imgPath = Server.MapPath("/Content/Images/") + internalImgName;
+                            
+                        imgProdus.SaveAs(imgPath);
+
+                        produsDeAdaugat.imagePath = "/Content/Images/" + internalImgName;
+                    }
+                    else
+                    {
+                        produsDeAdaugat.CategoriiNeasociate = categoriiNeasociate(produsDeAdaugat, produsDeAdaugat.CategoriiAsociate);
+
+                        ViewBag.eroareImagineProdus = "Produsul trebuie să aibă o imagine de tip .jpg sau .png!";
+
+                        return View("FormAdaugare", produsDeAdaugat);
+                    }
 
                     produsDeAdaugat.aprobat = false;
 
@@ -628,6 +742,9 @@ namespace Proiect_ASP_final.Controllers
                     if(produsDeAdaugat.CategoriiAsociate.Count() == 0)
                         ViewBag.eroareCategoriiLipsa = "Produsul trebuie să facă parte din cel puțin o categorie!";
 
+                    if (!numeUnic)
+                        TempData["eroareTitluUnic"] = "Există deja un produs cu acest nume!";
+
                     return View("FormAdaugare", produsDeAdaugat);
                 }
                 
@@ -640,6 +757,24 @@ namespace Proiect_ASP_final.Controllers
             }
         }
 
+        // pentru stergerea imaginii cand un produs este sters sau editat
+        [NonAction]
+        private void StergereImagine(int idProdus)
+        {
+            var imgPath = from p in db.Produse
+                          where p.idProdus == idProdus
+                          select p;
+
+            string imagePath = Server.MapPath(imgPath.SingleOrDefault().imagePath);
+            
+            // verific pentru ca in baza de date path ul pozei produsului nu este required
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+ 
+        }
+
         [HttpDelete]
         [Authorize(Roles = "Seller,Admin")]
         public ActionResult Stergere(int id)
@@ -650,6 +785,8 @@ namespace Proiect_ASP_final.Controllers
 
                 if (produsDeSters.idOwner == User.Identity.GetUserId() || User.IsInRole("Admin"))
                 {
+                    StergereImagine(id);
+
                     db.Produse.Remove(produsDeSters);
 
                     db.SaveChanges();

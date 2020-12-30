@@ -2,29 +2,47 @@
 
 <div class="form-group">
 
-    @Html.LabelFor(m => m.tara, "Tara - Trebuie să conțină între 2 și 25 de caractere")
+    @Html.LabelFor(m => m.tara, "Țara")
     <br />
     @Html.ValidationMessageFor(m => m.tara, null, new { @class = "text-danger" })
     <br />
     @Html.EditorFor(m => m.tara, new { htmlAttributes = new { @class = "form-control" } })
     <br />
-    @Html.LabelFor(m => m.oras, "Oras - Trebuie să conțină între 3 și 100 de caractere")
+    @Html.LabelFor(m => m.oras, "Orașul")
     <br />
     @Html.ValidationMessageFor(m => m.oras, null, new { @class = "text-danger" })
     <br />
     @Html.EditorFor(m => m.oras, new { htmlAttributes = new { @class = "form-control" } })
     <br />
-    @Html.LabelFor(m => m.strada, "Strada - Trebuie să conțină între 3 și 100 de caractere")
+    @Html.LabelFor(m => m.strada, "Strada")
     <br />
     @Html.ValidationMessageFor(m => m.strada, null, new { @class = "text-danger" })
     <br />
     @Html.EditorFor(m => m.strada, new { htmlAttributes = new { @class = "form-control" } })
     <br />
-    @Html.LabelFor(m => m.nr, "Nr. - Trebuie să fie intre 1 și 1000")
+    @Html.LabelFor(m => m.nr, "Nr.")
     <br />
     @Html.ValidationMessageFor(m => m.nr, null, new { @class = "text-danger" })
     <br />
     @Html.EditorFor(m => m.nr, new { htmlAttributes = new { @class = "form-control" } })
+    <br />
+    @Html.LabelFor(m => m.nr, "Bl.")
+    <br />
+    @Html.ValidationMessageFor(m => m.bloc, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.bloc, new { htmlAttributes = new { @class = "form-control" } })
+    <br />
+    @Html.LabelFor(m => m.nr, "Sc.")
+    <br />
+    @Html.ValidationMessageFor(m => m.scara, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.scara, new { htmlAttributes = new { @class = "form-control" } })
+    <br />
+    @Html.LabelFor(m => m.nr, "Et.")
+    <br />
+    @Html.ValidationMessageFor(m => m.etaj, null, new { @class = "text-danger" })
+    <br />
+    @Html.EditorFor(m => m.etaj, new { htmlAttributes = new { @class = "form-control" } })
     <br />
     @Html.LabelFor(m => m.mentiune, "Mentiune despre adresă:")
     <br />

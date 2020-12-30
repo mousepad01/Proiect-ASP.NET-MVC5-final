@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h2>@ViewBag.Mesaj</h2>
+<br />
+<h2>Index</h2>
+@for (int i = 0; i < ViewBag.useri.Count; i++)
+{
+    var u = ViewBag.useri[i];
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @u.Email
+        </div>
+        <div class="panel-body">
+            @u.Id
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <a href="/Profile/ViewProfile?userId=@u.Id" class="btn btn-info">Vizualizează profil</a>
+
+                @if (ViewBag.eBlocat[i])
+                {
+                    <a href="/Profile/BanUser?userId=@u.Id" class="btn btn-danger">Deblochează utilizator</a>
+                }
+                else
+                {
+                    <a href="/Profile/BanUser?userId=@u.Id" class="btn btn-danger">Blochează utilizator</a>
+                }
+
+            </div>
+
+        </div>
+    </div>
+}

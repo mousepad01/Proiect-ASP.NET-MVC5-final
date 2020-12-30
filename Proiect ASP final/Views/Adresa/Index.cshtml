@@ -1,29 +1,40 @@
 ﻿@{
-    ViewBag.Title = "Adrese";
+    ViewBag.Title = "Lista adreselor mele";
 }
 
-<h2>@ViewBag.mesaj</h2>
-<h1>Lista completă a adreselor:</h1>
-<br />
-
-@foreach (var adress in ViewBag.adrese)
+@if (ViewBag.mesaj != null)
 {
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @adress.idAdresa
-        </div>
-        <div class="panel-body">
-            Adresa: @adress.tara, @adress.oras, Str. @adress.strada, Nr. @adress.nr
-            <br />
-            <i class="glyphicon glyphicon-user"></i> ID User Asociat: @adress.idUtilizator
-            <br />
-        </div>
-        <div class="panel panel-footer">
-            <a class="btn btn-primary" href="/Adresa/Afisare/@adress.idAdresa">Afișează adresa</a>
-            <br />
-        </div>
-    </div>
+    <h2>@ViewBag.mesaj</h2>
+    <br />
 }
 
-<br />
-<a class="btn btn-outline-success" href="/Adresa/Adaugare" role="button">Adaugă o noua adresa</a>
+@if (ViewBag.existaAdrese == null && ViewBag.isAdmin)
+{
+    <h1>Nu există nici o adresă adăugată.</h1>
+    <br />
+}
+else if (ViewBag.existaAdrese == null && !ViewBag.isAdmin)
+{
+    <h1>Nu aveți nici o adresă adăugată.</h1>
+    <br />
+    <a class="btn btn-success" href="/Adresa/Adaugare" role="button"><i class="glyphicon glyphicon-plus-sign"></i> Adaugă o adresă</a>
+}
+else
+{
+    <h1>Lista completă a adreselor:</h1>
+    foreach (var adress in ViewBag.adrese)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Adresa: @adress.tara, @adress.oras, Str. @adress.strada, Nr. @adress.nr, @adress.bloc</h4>
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-primary" href="/Adresa/Afisare/@adress.idAdresa"><i class="glyphicon glyphicon-search"></i> Afișează adresa</a>
+                <br />
+            </div>
+        </div>
+    }
+    <a class="btn btn-success" href="/Adresa/Adaugare" role="button"><i class="glyphicon glyphicon-plus-sign"></i> Adaugă o noua adresa</a>
+}
+
+

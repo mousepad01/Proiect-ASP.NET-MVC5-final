@@ -36,7 +36,7 @@ namespace Proiect_ASP_final.Models
         public DateTime dataAdaugare { get; set; }
 
         [Required(ErrorMessage = "Cantitatea produsului este obligatorie!")]
-        [Range(1, 1000000, ErrorMessage = "Cantitatea trebuie să fie cuprinsă între 1 și 1 milion!")]
+        [Range(0, 1000000, ErrorMessage = "Cantitatea trebuie să fie cuprinsă între 0 și 1 milion!")]
         public int cantitate { get; set; }
 
         public bool aprobat { get; set; }

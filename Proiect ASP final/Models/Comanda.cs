@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace Proiect_ASP_final.Models
 {
-
     [Table("Comenzi")]
     public class Comanda
     {
@@ -21,13 +20,18 @@ namespace Proiect_ASP_final.Models
         [Required]
         public int idAdresa { get; set; }
 
+        public string idUtilizator { get; set; }
+
         [Required]
-        public int idUtilizator { get; set; }
+        public int sumaDePlata { get; set; }
 
         public DateTime dataFinalizare { get; set; }
 
         public virtual Adresa Adresa { get; set; }
 
-        public IEnumerable<SelectListItem> Adrese { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        public virtual IEnumerable<SelectListItem> Adrese { get; set; }
+        public virtual ICollection<Produs> ProduseComandate { get; set; }
+
     }
 }

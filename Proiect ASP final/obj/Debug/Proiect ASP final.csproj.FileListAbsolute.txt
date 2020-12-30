@@ -104,3 +104,215 @@ C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\obj\Debug\Pro
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\obj\Debug\Proiect ASP final.pdb
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\obj\Debug\Proiect_ASP_final.Migrations.Initial.resources
 C:\Users\Proteina\source\repos\Proiect ASP final\Proiect ASP final\obj\Debug\Proiect ASP final.csproj.GenerateResource.cache
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\obj\Debug\Proiect ASP final.csprojAssemblyReference.cache
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\obj\Debug\Proiect_ASP_final.Migrations.Initial.resources
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\obj\Debug\Proiect ASP final.csproj.GenerateResource.cache
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\obj\Debug\Proiect ASP final.csproj.CoreCompileInputs.cache
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\obj\Debug\Proiect ASP final.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\obj\Debug\Proiect ASP final.pdb
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Proiect ASP final.dll.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Proiect ASP final.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Proiect ASP final.pdb
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\csc.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\csc.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\csc.rsp
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\csi.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\csi.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\csi.rsp
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.AppContext.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Collections.Immutable.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Console.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.IO.Compression.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.IO.FileSystem.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.IO.Pipes.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Reflection.Metadata.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Security.AccessControl.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Security.Claims.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.ValueTuple.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Xml.XPath.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\vbc.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\vbc.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\vbc.rsp
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\VBCSCompiler.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\roslyn\VBCSCompiler.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Antlr3.Runtime.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\EntityFramework.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\EntityFramework.SqlServer.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.Google.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Web.Infrastructure.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Newtonsoft.Json.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Owin.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Helpers.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Mvc.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Optimization.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Razor.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.WebPages.Deployment.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.WebPages.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.WebPages.Razor.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\WebGrease.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.Google.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Helpers.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Mvc.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Optimization.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.Razor.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.WebPages.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.WebPages.Deployment.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\System.Web.WebPages.Razor.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Newtonsoft.Json.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Antlr3.Runtime.pdb
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\EntityFramework.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\EntityFramework.SqlServer.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect fara conflicte\Proiect ASP final\obj\Debug\Proiect ASP final.csproj.CopyComplete
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Proiect ASP final.dll.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Proiect ASP final.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Proiect ASP final.pdb
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\csc.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\csc.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\csc.rsp
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\csi.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\csi.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\csi.rsp
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.AppContext.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Collections.Immutable.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Console.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.IO.Compression.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.IO.FileSystem.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.IO.Pipes.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Reflection.Metadata.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Security.AccessControl.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Security.Claims.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.ValueTuple.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Xml.XPath.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\vbc.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\vbc.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\vbc.rsp
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\VBCSCompiler.exe
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\roslyn\VBCSCompiler.exe.config
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Antlr3.Runtime.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\EntityFramework.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\EntityFramework.SqlServer.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.Google.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Web.Infrastructure.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Newtonsoft.Json.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Owin.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Helpers.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Mvc.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Optimization.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Razor.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.WebPages.Deployment.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.WebPages.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.WebPages.Razor.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\WebGrease.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.Google.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Helpers.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Mvc.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Optimization.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.Razor.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.WebPages.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.WebPages.Deployment.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\System.Web.WebPages.Razor.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Newtonsoft.Json.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Antlr3.Runtime.pdb
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\EntityFramework.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\EntityFramework.SqlServer.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\obj\Debug\Proiect ASP final.csprojAssemblyReference.cache
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\obj\Debug\Proiect_ASP_final.Migrations.Initial.resources
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\obj\Debug\Proiect ASP final.csproj.GenerateResource.cache
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\obj\Debug\Proiect ASP final.csproj.CoreCompileInputs.cache
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\obj\Debug\Proiect ASP final.csproj.CopyComplete
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\obj\Debug\Proiect ASP final.dll
+E:\Projects\Facultate\an II\sem I\DezvAppWeb\Proiect\Proiect-ASP.NET-MVC5-final\Proiect ASP final\obj\Debug\Proiect ASP final.pdb
