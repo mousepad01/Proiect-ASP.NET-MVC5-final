@@ -3,9 +3,7 @@
     ViewBag.Title = "Produse";
 }
 
-<h1>@ViewBag.mesaj</h1>
-
-<h1>Lista completă de produse:</h1>
+<h1 style="font-style:italic">@ViewBag.mesaj</h1>
 
 <br />
 <div class="container-fluid">
@@ -47,7 +45,7 @@
                         <input class="form-control" type="date" name="dataMax" value="@ViewBag.dataMaxDefault.ToString("yyyy-MM-dd")" required="required" />
                     </div>
                     <br />
-                    <button class="btn fitb" type="submit"><i class="glyphicon glyphicon-filter"></i> Aplica preferintele</button>
+                    <button class="btn fitb" type="submit"><i class="glyphicon glyphicon-filter"></i> Aplică preferințele</button>
                     <br />
                     <br />
                     <a class="btn fitb" href="/Produs/Index" role="button"><i class="glyphicon glyphicon-erase"></i> Resetează preferințele</a>
@@ -63,7 +61,7 @@
                 </form>
                 </div>
             </div>
-        <div class="col-md-9">
+        <div class="col-md-9 multiple">
             @foreach (Proiect_ASP_final.Models.Produs prod in ViewBag.produse)
             {
                 @Html.Partial("ProdusSumar", prod)

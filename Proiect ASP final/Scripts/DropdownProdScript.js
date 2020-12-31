@@ -29,8 +29,8 @@ var dropdownIconReview = document.getElementById("dropdownIconReview");
 
 var clickedReview = true;
 
-dropActivateReview.addEventListener("click", function () {
-
+function reviewDropdown() {
+    console.log(clickedReview)
     if (clickedReview == false) {
 
         dropdownContentReview.style.display = "block";
@@ -45,5 +45,11 @@ dropActivateReview.addEventListener("click", function () {
 
         clickedReview = false;
     }
+}
 
-});
+dropActivateReview.addEventListener("click", reviewDropdown);
+
+var reviewLink = document.getElementById("reviewLink");
+
+
+reviewLink.addEventListener("click", reviewDropdown);

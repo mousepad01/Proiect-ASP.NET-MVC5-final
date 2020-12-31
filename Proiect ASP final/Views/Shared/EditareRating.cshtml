@@ -1,4 +1,6 @@
 ﻿@model Proiect_ASP_final.Models.ProdusRating
+<input id="modelRatingBufferEdit" type="hidden" value="@Model.rating" />
+<input id="modelIdBufferEdit" type="hidden" value="@Model.prodRating" />
 <div class="panel-body">
     <form method="post" action="/ProdusRating/EditeazaRating/@Model.prodRating">
         @Html.HttpMethodOverride(HttpVerbs.Put)

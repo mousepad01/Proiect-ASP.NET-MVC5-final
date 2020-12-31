@@ -5,7 +5,7 @@
 
 @model Proiect_ASP_final.Models.Produs
 
-<h3>@ViewBag.mesaj</h3>
+<h3 style="font-style:italic">@ViewBag.mesaj</h3>
 
 <h2 class="prodTitle">@Model.titlu</h2>
 <i class="glyphicon glyphicon-chevron-right"></i>
@@ -19,14 +19,16 @@
 <div class="panel panel-default">
     @if (ViewBag.aprobare == false)
     {
-        <p class="text-warning">Produsul nu a fost (încă) aprobat!</p>
-
         if (User.IsInRole("Admin"))
         {
             <form method="post" action="/Produs/AprobareProdus/@Model.idProdus">
                 @Html.HttpMethodOverride(HttpVerbs.Put)
-                <button class="btn">Aprobă acest produs</button>
+                <button class="btn neaprobat">Aprobă acest produs</button>
             </form>
+        }
+        else
+        {
+            <div class="neaprobat">Produsul nu a fost (încă) aprobat!</div>
         }
     }
     <img class="prodimg" src="@Model.imagePath" />
@@ -48,11 +50,11 @@
             }
             if (Model.nrRatinguri == 1)
             {
-                @:Un review
+                <a id="reviewLink">Un review</a>
             }
             else
             {
-                @Model.nrRatinguri @:review-uri
+                <a id="reviewLink">@Model.nrRatinguri review-uri </a>
             }
         }
     </div>
@@ -150,7 +152,8 @@
                 {
                     if (ViewBag.EroareEditareRating == rev.prodRating)
                     {
-                        <div class="reviewEditare revbtn">
+                        <div class="reviewEditare">
+
                             @Html.Partial("EditareRating", new Proiect_ASP_final.Models.ProdusRating { prodRating = ViewBag.ratingEronatEditare.prodRating, idProdus = ViewBag.ratingEronatEditare.idProdus, rating = ViewBag.ratingEronatEditare.rating, descriereRating = ViewBag.ratingEronatEditare.descriereRating })
                         </div>
                     }
@@ -192,10 +195,7 @@
     <br />
 </div>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/ButoaneRating.js"></script>
-@Scripts.Render("~/bundles/ratingscr")
 @Scripts.Render("~/bundles/dropdown")
-@Scripts.Render("~/bundles/ratinginput")
-
+@Scripts.Render("~/bundles/ratingscr")
 
 

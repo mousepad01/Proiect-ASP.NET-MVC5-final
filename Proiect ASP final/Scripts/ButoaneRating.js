@@ -168,6 +168,43 @@ function set5Edit(editId) {
     }
 }
 
+document.onreadystatechange = function () {
+    
+    if (document.readyState === 'complete') {
+
+        var modelRatingBufferEdit = document.getElementById("modelRatingBufferEdit");
+        var modelIdBufferEdit = document.getElementById("modelIdBufferEdit");
+        
+        if (modelRatingBufferEdit != null && modelIdBufferEdit != null) {
+
+            var editId = modelIdBufferEdit.value;
+            var to_edit_rating = modelRatingBufferEdit.value;
+
+            initEdit(editId);
+
+            if (to_edit_rating == 1) {
+                mark1Edit();
+            }
+            else if (to_edit_rating == 2) {
+                mark2Edit();
+            }
+            else if (to_edit_rating == 3) {
+                mark3Edit();
+            }
+            else if (to_edit_rating == 4) {
+                mark4Edit();
+            }
+            else if (to_edit_rating == 5) {
+                mark5Edit();
+            }
+        }
+    }
+}
+
+    
+
+
+
 
 ///---------------------------------------------------------------------------
 
@@ -315,6 +352,8 @@ function set5() {
         mark5();
     }
 }
+
+//-------------------------------------------------------------------------------------------
 
 
 

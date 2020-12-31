@@ -260,6 +260,47 @@ namespace Proiect_ASP_final.Controllers
             return View("Index");
         }
 
+        // GET produs cautat
+        [AllowAnonymous]
+        public ActionResult CautaProdus(string searched)
+        {
+            IQueryable<Produs> produsQ;
+
+            if (User.IsInRole("Admin"))
+            {
+                produsQ = from p in db.Produse
+                          where p.titlu == searched
+                          select p;
+            }
+            else if (User.IsInRole("Seller"))
+            {
+                string idUserCurent = User.Identity.GetUserId();
+
+                produsQ = from p in db.Produse
+                          where p.titlu == searched && (p.aprobat == true || p.idOwner == idUserCurent)
+                          select p;
+            }
+            else
+            {
+                produsQ = from p in db.Produse
+                          where p.titlu == searched && p.aprobat == true
+                          select p;
+            }
+            
+            Produs produsCautat = produsQ.SingleOrDefault();
+
+            if(produsCautat != null)
+            {
+                return RedirectToAction("Afisare", new { id = produsCautat.idProdus });
+            }
+            else
+            {
+                TempData["mesaj"] = "Nu s-a găsit produsul căutat!";
+
+                return RedirectToAction("Index");
+            }
+        }
+
         // Returneaza o lista cu obiecte de tipul (valoare, text) 
         // unde valoarea este ID ul categoriei asociate (sub forma de string)
         // iar textul este TITLUL categoriei asociate (sub forma de string)

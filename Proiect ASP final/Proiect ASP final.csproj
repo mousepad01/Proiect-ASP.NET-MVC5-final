@@ -228,7 +228,6 @@
     <Content Include="Scripts\menuScript.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\NavBarScript.js" />
-    <Content Include="Scripts\RatingInputScript.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -38,6 +38,7 @@ namespace Proiect_ASP_final.Controllers
                           from cp in db.CategoriiProduse
                           where cp.idCategorie == categorieCautata.idCategorie
                           where p.idProdus == cp.idProdus
+                          where p.aprobat == true
                           select p;
 
             ViewBag.produse = produse;

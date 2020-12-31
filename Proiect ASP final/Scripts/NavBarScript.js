@@ -9,7 +9,17 @@ else if (document.title == "Categorii") {
     var categLink = document.getElementById("linkCateg");
     categLink.className = "activeLink";
 }
-else if (document.title == "Adrese") {
+else if (document.title == "Afișare comandă") {
+
+    var adrLink = document.getElementById("inkCart");
+    adrLink.className = "activeLink";
+}
+else if (document.title == "Afisare categorie") {
+
+    var adrLink = document.getElementById("linkAdrese");
+    adrLink.className = "activeLink";
+}
+else if (document.title == "Afisare adresă") {
 
     var adrLink = document.getElementById("linkAdrese");
     adrLink.className = "activeLink";
