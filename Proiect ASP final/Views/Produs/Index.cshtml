@@ -9,11 +9,11 @@
 <div class="container-fluid">
     <div class="row" id="backgroundCon">
         <div class="col-md-3" id="menuCon">
-            <div id="menu" data-spy="affix" data-offset-bottom="200">
+            <div id="menu">
                 <form action="/Produs/IndexSorted" method="post">
                     <label for="sortCrit">Sortați după:</label>
                     <div class="form-group">
-                        <select class="form-control" id="sortCrit" name="sortCrit">
+                        <select class="form-control fitc" id="sortCrit" name="sortCrit">
                             <option value="none" @(ViewBag.selectedSort == "none" ? "selected" : "")>-- Aleator --</option>
                             <option value="tc" @(ViewBag.selectedSort == "tc" ? "selected" : "")>Titlu crescător</option>
                             <option value="tdc" @(ViewBag.selectedSort == "tdc" ? "selected" : "")>Titlu descrescător</option>
@@ -29,20 +29,20 @@
                     <br />
                     <div class="form-group">
                         <label>Selectați intervalul de preț:</label>
-                        <input class="form-control" type="number" name="pretMin" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMinDefault" required="required" />
-                        <input class="form-control" type="number" name="pretMax" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMaxDefault" required="required" />
+                        <input class="form-control fitc" type="number" name="pretMin" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMinDefault" required="required" />
+                        <input class="form-control fitc" type="number" name="pretMax" min="@ViewBag.pretMin" max="@ViewBag.pretMax" value="@ViewBag.pretMaxDefault" required="required" />
                     </div>
                     <br />
                     <div class="form-group">
                         <label>Selectați intervalul de rating:</label>
-                        <input class="form-control" type="number" name="ratingMin" min="@ViewBag.ratingMin" max="@ViewBag.ratingMax" value="@ViewBag.ratingMinDefault" required="required" />
-                        <input class="form-control" type="number" name="ratingMax" min="@ViewBag.ratingMin" max="@ViewBag.ratingMax" value="@ViewBag.ratingMaxDefault" required="required" />
+                        <input class="form-control fitc" type="number" name="ratingMin" min="@ViewBag.ratingMin" max="@ViewBag.ratingMax" value="@ViewBag.ratingMinDefault" required="required" />
+                        <input class="form-control fitc" type="number" name="ratingMax" min="@ViewBag.ratingMin" max="@ViewBag.ratingMax" value="@ViewBag.ratingMaxDefault" required="required" />
                     </div>
                     <br />
                     <div class="form-group">
                         <label>Selectați intervalul datei de adăugare:</label>
-                        <input class="form-control" type="date" name="dataMin" value="@ViewBag.dataMinDefault.ToString("yyyy-MM-dd")" required="required" />
-                        <input class="form-control" type="date" name="dataMax" value="@ViewBag.dataMaxDefault.ToString("yyyy-MM-dd")" required="required" />
+                        <input class="form-control fitc" type="date" name="dataMin" value="@ViewBag.dataMinDefault.ToString("yyyy-MM-dd")" required="required" />
+                        <input class="form-control fitc" type="date" name="dataMax" value="@ViewBag.dataMaxDefault.ToString("yyyy-MM-dd")" required="required" />
                     </div>
                     <br />
                     <button class="btn fitb" type="submit"><i class="glyphicon glyphicon-filter"></i> Aplică preferințele</button>

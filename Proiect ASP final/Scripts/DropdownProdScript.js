@@ -4,7 +4,7 @@ var dropdownIconInfo = document.getElementById("dropdownIconInfo");
 
 var clickedInfo = false;
 
-dropActivateInfo.addEventListener("click", function (){
+function infoDropdown() {
 
     if (clickedInfo == false) {
 
@@ -20,8 +20,9 @@ dropActivateInfo.addEventListener("click", function (){
 
         clickedInfo = false;
     }
-    
-});
+}
+
+dropActivateInfo.addEventListener("click", infoDropdown);
 
 var dropActivateReview = document.getElementById("dropActivateReview");
 var dropdownContentReview = document.getElementById("dropdownContentReview");
@@ -30,7 +31,7 @@ var dropdownIconReview = document.getElementById("dropdownIconReview");
 var clickedReview = true;
 
 function reviewDropdown() {
-    console.log(clickedReview)
+    
     if (clickedReview == false) {
 
         dropdownContentReview.style.display = "block";

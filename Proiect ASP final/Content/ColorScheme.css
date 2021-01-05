@@ -28,6 +28,10 @@
     width: 100%;
 }
 
+.fitc{
+    max-width:none;
+}
+
 .btn:hover {
     background: #34005C;
     color: white;
@@ -152,6 +156,10 @@ a:focus {
     display: inline-block;
 }
 
+#dropActivateInfo:hover, #dropActivateReview:hover, #reviewLink:hover {
+    cursor: pointer;
+}
+
 .userBold {
     font-weight: 600;
     color: #34005C;
@@ -223,6 +231,11 @@ a:focus {
 
 .srchBtn{
     display:contents;
+}
+
+.topBarBtn{
+    width:100%;
+    margin-right:0;
 }
 
 
