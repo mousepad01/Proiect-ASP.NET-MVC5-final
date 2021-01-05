@@ -20,7 +20,12 @@ namespace Proiect_ASP_final.Controllers
             if (produs.nrRatinguri == 0)
                 return 0;
             else
-                return produs.ratingInsumat / produs.nrRatinguri;
+            {
+                if (produs.ratingInsumat % produs.nrRatinguri >= produs.nrRatinguri / 2)
+                    return produs.ratingInsumat / produs.nrRatinguri + 1;
+                else
+                    return produs.ratingInsumat / produs.nrRatinguri;
+            }
         }
 
         // metoda pentru a updata numarul de review uri si suma review urilor ale produsului asociat 
