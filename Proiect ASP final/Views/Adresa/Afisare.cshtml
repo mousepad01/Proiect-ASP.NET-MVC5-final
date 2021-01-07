@@ -2,9 +2,7 @@
 @{
     ViewBag.Title = "Afisare adresă";
 }
-
 @model Proiect_ASP_final.Models.Adresa
-
 <h2>
     <i class="glyphicon glyphicon-home"></i> Adresa:
 </h2>
@@ -20,7 +18,6 @@
             @Model.mentiune
         }
     </div>
-
     <div class="panel-footer">
         <a class="btn btn-info" href="/Adresa/Editare/@Model.idAdresa" role="button"><i class="glyphicon glyphicon-file"></i> Editează aceasta adresă</a>
         <br />
@@ -33,9 +30,7 @@
     </div>
 </div>
 <br />
-
 <a class="btn btn-info" href="/Adresa" role="button"><i class="glyphicon glyphicon-arrow-left"></i> Reveniți la lista de adrese</a>
-
 
 @if (ViewBag.areComenzi == true)
 {
@@ -43,7 +38,7 @@
     foreach (var comanda in ViewBag.comenzi)
     {
         <div class="panel panel-default">
-            <div class="panel panel-heading">
+            <div class="panel-heading">
                 @if (comanda.dataPlasare == comanda.dataFinalizare)
                 {
                     <i class="glyphicon glyphicon-question-sign"></i>
@@ -54,13 +49,13 @@
                 }
                 ID Comanda: @comanda.idComanda
             </div>
-            <div class="panel panel-body">
+            <div class="panel-body">
                 <i class="glyphicon glyphicon-info-sign"></i>Comanda a fost dată la data de: @comanda.dataPlasare
                 <br />
                 <i class="glyphicon glyphicon-asterisk"></i>Prețul total este: @comanda.sumaDePlata
                 <br />
             </div>
-            <div class="panel panel-footer">
+            <div class="panel-footer">
                 <a class="btn btn-primary" href="/Comanda/Afisare/@comanda.idComanda">Afișează comanda</a>
                 <br />
             </div>

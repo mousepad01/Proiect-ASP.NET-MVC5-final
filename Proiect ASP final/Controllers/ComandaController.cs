@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Proiect_ASP_final.Controllers
-{   
+{
     [RequireHttps]
     public class ComandaController : Controller
     {
@@ -34,15 +34,15 @@ namespace Proiect_ASP_final.Controllers
             else
             {
                 var comenzi = from a in db.Comenzi
-                                  where a.idUtilizator == userId
-                                  select a;
+                              where a.idUtilizator == userId
+                              select a;
 
                 ViewBag.comenzi = comenzi;
 
                 if (comenzi.Any())
                     ViewBag.areComenzi = true;
             }
-                
+
 
             if (TempData["mesaj"] != null)
                 ViewBag.mesaj = TempData["mesaj"];
@@ -107,6 +107,16 @@ namespace Proiect_ASP_final.Controllers
             comanda.idUtilizator = userId;
             comanda.Adrese = GetAllAdresses();
 
+            var cartItems = (from cp in db.CartItems
+                             where cp.idUtilizator == userId
+                             select cp).ToList<CartItem>();
+
+            if (cartItems.Count() == 0)
+            {
+                TempData["mesaj"] = "Nu aveți nici un produs în coș!";
+                return RedirectToAction("Index", "CartItem");
+            }
+
             return View("FormAdaugare", comanda);
         }
 
@@ -116,8 +126,8 @@ namespace Proiect_ASP_final.Controllers
         {
             String userId = User.Identity.GetUserId();
             var cartItems = (from cp in db.CartItems
-                            where cp.idUtilizator == userId
-                            select cp).ToList<CartItem>();
+                             where cp.idUtilizator == userId
+                             select cp).ToList<CartItem>();
 
             comandaDeAdaugat.dataPlasare = DateTime.Now;
             comandaDeAdaugat.dataFinalizare = DateTime.Now;
@@ -148,8 +158,8 @@ namespace Proiect_ASP_final.Controllers
 
                             // Aici verific ca alte comenzi sa nu depaseasca pretul produselor (daca un produs nu mai e in stoc, se sterge automat din cosul utilizatorului)
                             var alteComenzi = (from ac in db.CartItems
-                                              where ac.idProdus == produs.idProdus
-                                              select ac).ToList<CartItem>();
+                                               where ac.idProdus == produs.idProdus
+                                               select ac).ToList<CartItem>();
 
                             if (produs.cantitate != 0)
                             {
@@ -164,7 +174,7 @@ namespace Proiect_ASP_final.Controllers
                                 foreach (CartItem altaComanda in alteComenzi)
                                     db.CartItems.Remove(altaComanda);
                             }
-                            
+
                             // Sterg produsul din cosul utilizatorului
                             CartItem cartItemDeSters = db.CartItems.Find(cartItem.id);
                             db.CartItems.Remove(cartItemDeSters);
@@ -173,7 +183,7 @@ namespace Proiect_ASP_final.Controllers
 
                     db.Comenzi.Add(comandaDeAdaugat);
                     db.SaveChanges();
-                       
+
                     return RedirectToAction("Afisare", new { id = comandaDeAdaugat.idComanda });
                 }
                 else
@@ -233,7 +243,7 @@ namespace Proiect_ASP_final.Controllers
         {
             var selectList = new List<SelectListItem>();
             var adrese = from a in db.Adrese
-                             select a;
+                         select a;
 
             foreach (var adresa in adrese)
             {

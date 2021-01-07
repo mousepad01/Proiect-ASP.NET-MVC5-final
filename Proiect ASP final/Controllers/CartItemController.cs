@@ -22,6 +22,11 @@ namespace Proiect_ASP_final.Controllers
                              where cp.idUtilizator == userId
                              select cp).ToList<CartItem>();
 
+            if (cartItems.Count == 0)
+                ViewBag.areProduse = false;
+            else
+                ViewBag.areProduse = true;
+
             ViewBag.cartItems = cartItems;
 
             int total = 0;
@@ -67,9 +72,9 @@ namespace Proiect_ASP_final.Controllers
             Produs produs = db.Produse.Find(idProdus);
 
             var cartItems = (from cp in db.CartItems
-                            where cp.idUtilizator == userId
-                            where cp.idProdus == idProdus
-                            select cp).ToList<CartItem>();
+                             where cp.idUtilizator == userId
+                             where cp.idProdus == idProdus
+                             select cp).ToList<CartItem>();
 
             if (cartItems.Any())
             {

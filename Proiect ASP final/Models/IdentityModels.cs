@@ -16,6 +16,9 @@ namespace Proiect_ASP_final.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string prenume { get; set; }
+        public string nume { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
